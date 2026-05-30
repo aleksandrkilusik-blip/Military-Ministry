@@ -91,6 +91,690 @@
 
 Я деякий час працював у сфері продажів. Хоча війна на Донбасі вже тривала, життя для багатьох залишалося звичним. Але повномасштабне вторгнення 2022 року змінило все. Мене мобілізували до Збройних Сил України, і я служив розвідником у штурмовій бригаді. Під час одного з бойових завдань я отримав важке поранення і втратив кінцівку.
 
+Під час відновлення та реабілітації я познайомився з багатьма побратимами, які також пережили втрати та перебували в пошуку сенсу, надії й спільноти. Бог почав глибоко працювати в моєму серці, і я зрозумів, що не можу мовчати — я хочу йти поруч з тими, хто страждає.
+
+Саме тому я приєднався до місії «Україна для Христа» (CRU), щоб ділитися Євангелієм із ветеранами — тими, хто поранений тілом і душею, але відкритий до істини. Лише Христос може зцілити найглибші рани.`
+          }
+        ];
+
+        // Декоративний розділювач ( chevron / star )
+        const MilitaryDivider = ({ title }) => (
+          <div className="flex items-center justify-center my-12 max-w-5xl mx-auto px-4">
+            <div className="flex-grow h-[1px] bg-[#768E80]/30"></div>
+            <div className="flex items-center mx-4 space-x-2 text-[#768E80]">
+              <span className="text-xs">★</span>
+              {title && <span className="military-font text-xs uppercase tracking-[0.3em] text-[#2B3830] font-bold">{title}</span>}
+              <span className="text-xs">★</span>
+            </div>
+            <div className="flex-grow h-[1px] bg-[#768E80]/30"></div>
+          </div>
+        );
+
+        // SVG іконки
+        const MenuIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>;
+        const ChevronDownIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>;
+        const ArrowLeftIcon = ({ className }) => <svg xmlns="http://www.w3.org/2000/svg" className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>;
+
+        // Слайди для каруселей діяльності
+        const bukovelSlides = [
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/mounting.jpeg', position: 'object-[center_90%]' },
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit1.jpeg', position: 'object-center' }
+        ];
+
+        const europeSlides = [
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit.jpeg', position: 'object-center' },
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit3.jpeg', position: 'object-[center_25%]' },
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit2.jpeg', position: 'object-[center_20%]' }
+        ];
+
+        // Компонент каруселі з підтримкою автопрокрутки та індивідуального кадрування
+        const Carousel = ({ slides }) => {
+          const [currentIndex, setCurrentIndex] = useState(0);
+
+          useEffect(() => {
+            const timer = setInterval(() => {
+              setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+            }, 5000);
+            return () => clearInterval(timer);
+          }, [slides.length]);
+
+          const prevSlide = (e) => {
+            e.stopPropagation();
+            setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+          };
+
+          const nextSlide = (e) => {
+            e.stopPropagation();
+            setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+          };
+
+          return (
+            <div className="relative w-full h-full group overflow-hidden rounded-sm bg-[#EBF0EC]">
+              {/* Зображення */}
+              {slides.map((slide, idx) => (
+                <div 
+                  key={idx}
+                  className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                >
+                  <img 
+                    src={slide.url} 
+                    alt={`Слайд ${idx + 1}`} 
+                    className={`w-full h-full object-cover ${slide.position || 'object-center'}`}
+                  />
+                </div>
+              ))}
+
+              {/* Стрілочка вліво */}
+              <button 
+                onClick={prevSlide}
+                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-2 rounded-full transition opacity-0 group-hover:opacity-100 focus:opacity-100"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {/* Стрілочка вправо */}
+              <button 
+                onClick={nextSlide}
+                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-2 rounded-full transition opacity-0 group-hover:opacity-100 focus:opacity-100"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              {/* Крапки індикатори знизу */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
+                {slides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
+                    className={`w-2 h-2 rounded-full transition-all ${idx === currentIndex ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/80'}`}
+                  />
+                ))}
+              </div>
+            </div>
+          );
+        };
+
+        function App() {
+          const [currentPage, setCurrentPage] = useState('home');
+          const [selectedMember, setSelectedMember] = useState(null);
+          const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+          const [activeActivityTab, setActiveActivityTab] = useState('hospitals');
+          const [activeRetreatSubTab, setActiveRetreatSubTab] = useState('bukovel');
+
+          const navigateToMember = (member) => {
+            setSelectedMember(member);
+            setCurrentPage('member');
+            window.scrollTo(0, 0);
+          };
+
+          const navigateToHome = () => {
+            setCurrentPage('home');
+            setSelectedMember(null);
+            window.scrollTo(0, 0);
+          };
+
+          const Navbar = () => (
+            <nav className="w-full bg-[#F4F6F4] text-[#2B3830] border-b-2 border-[#DCE3DB] sticky top-0 z-50">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between h-20 items-center">
+                  
+                  {/* Бренд-лого у вишуканому делікатній мілітарі стилі */}
+                  <div className="flex-shrink-0 flex items-center cursor-pointer space-x-2" onClick={navigateToHome}>
+                     <div className="w-6 h-6 border border-[#2B3830] bg-[#768E80] flex items-center justify-center rotate-45 transform hover:scale-110 transition">
+                        <span className="text-[#F4F6F4] text-[10px] font-black -rotate-45">★</span>
+                     </div>
+                     <div className="military-font font-bold text-lg leading-none uppercase tracking-widest">
+                       <span className="text-[#2B3830]">MILITARY</span><br/>
+                       <span className="text-[#768E80]">MINISTRY</span>
+                     </div>
+                  </div>
+
+                  {/* Меню */}
+                  <div className="hidden lg:flex space-x-8 text-xs font-bold tracking-[0.2em] military-font">
+                    <a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('team-section')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-[#2B3830] hover:text-[#768E80] transition-colors py-2 border-b-2 border-transparent hover:border-[#768E80]">КОМАНДА</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('vision-section')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-[#2B3830] hover:text-[#768E80] transition-colors py-2 border-b-2 border-transparent hover:border-[#768E80]">БАЧЕННЯ</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('why-veterans-section')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-[#2B3830] hover:text-[#768E80] transition-colors py-2 border-b-2 border-transparent hover:border-[#768E80]">ЧОМУ ВЕТЕРАНИ?</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('activities-section')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-[#2B3830] hover:text-[#768E80] transition-colors py-2 border-b-2 border-transparent hover:border-[#768E80]">ДІЯЛЬНІСТЬ</a>
+                  </div>
+
+                  {/* Кнопка дії */}
+                  <div className="hidden lg:flex items-center space-x-4">
+                    <div className="flex items-center text-[#2B3830] font-bold cursor-pointer hover:text-[#768E80] military-font text-xs tracking-wider">
+                      <span className="mr-1">UA</span>
+                      <ChevronDownIcon />
+                    </div>
+                    <button className="bg-[#768E80] hover:bg-[#5C7365] text-white font-bold py-2.5 px-6 uppercase tracking-widest military-font rounded-sm transition-all duration-200">
+                      Підтримати нас
+                    </button>
+                  </div>
+
+                  {/* Мобільне меню кнопка */}
+                  <div className="lg:hidden flex items-center">
+                    <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-[#2B3830] hover:text-[#768E80] focus:outline-none">
+                      <MenuIcon />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Мобільна навігація */}
+              {isMobileMenuOpen && (
+                <div className="lg:hidden bg-[#EBF0EC] border-t border-[#DCE3DB] px-4 pt-4 pb-6 space-y-2 shadow-lg military-font tracking-wider">
+                  <a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('team-section')?.scrollIntoView({ behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="block px-4 py-2 text-sm font-bold text-[#2B3830] hover:bg-[#DCE3DB] rounded-sm">КОМАНДА</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('vision-section')?.scrollIntoView({ behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="block px-4 py-2 text-sm font-bold text-[#2B3830] hover:bg-[#DCE3DB] rounded-sm">БАЧЕННЯ</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('why-veterans-section')?.scrollIntoView({ behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="block px-4 py-2 text-sm font-bold text-[#2B3830] hover:bg-[#DCE3DB] rounded-sm">ЧОМУ ВЕТЕРАНИ?</a>
+                  <a href="#" onClick={(e) => { e.preventDefault(); document.getElementById('activities-section')?.scrollIntoView({ behavior: 'smooth' }); setIsMobileMenuOpen(false); }} className="block px-4 py-2 text-sm font-bold text-[#2B3830] hover:bg-[#DCE3DB] rounded-sm">ДІЯЛЬНІСТЬ</a>
+                  <button className="mt-4 w-full bg-[#768E80] text-white font-bold py-3 px-6 uppercase tracking-widest text-xs rounded-sm">
+                    Підтримати нас
+                  </button>
+                </div>
+              )}
+            </nav>
+          );
+
+          return (
+            <div className="min-h-screen bg-[#F4F6F4] text-[#2B3830] font-sans selection:bg-[#768E80] selection:text-white">
+              <Navbar />
+
+              {currentPage === 'home' ? (
+                <main>
+                  
+                  {/* Нова преміальна Hero Секція у вишуканому стилі Slidesgo */}
+                  <section className="relative bg-[#2B3830] pt-24 pb-44 px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center border-b border-[#DCE3DB] tactical-grid">
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#2B3830]/95 to-[#243028] pointer-events-none"></div>
+                    
+                    <div className="relative z-10 max-w-5xl mx-auto mt-6">
+                      <div className="inline-flex items-center space-x-2 bg-[#768E80]/20 border border-[#768E80]/40 px-4 py-1 rounded-sm mb-6">
+                        <span className="text-[#A4B5A9] text-xs">★</span>
+                        <span className="military-font text-[10px] font-bold uppercase tracking-[0.25em] text-[#E9EBE4]">ДУХОВНИЙ ТИЛ ВЕТЕРАНІВ УКРАЇНИ</span>
+                        <span className="text-[#A4B5A9] text-xs">★</span>
+                      </div>
+
+                      <h1 className="text-5xl sm:text-8xl font-black tracking-[0.1em] text-[#F4F6F4] leading-none military-font mb-2 uppercase">
+                        MILITARY
+                      </h1>
+                      <h1 className="text-4xl sm:text-6xl tracking-[0.15em] text-[#A4B5A9] uppercase font-bold military-font mb-8">
+                        MINISTRY
+                      </h1>
+                      
+                      <div className="w-12 h-[2px] bg-[#A4B5A9]/50 mx-auto mb-8"></div>
+                      
+                      <p className="max-w-3xl text-xl sm:text-2xl text-[#E2EAE3] mx-auto font-light leading-relaxed serif-accent italic">
+                        Бути поруч із тими, хто повертається з війни. Я — духовний тил ветеранів України.
+                      </p>
+                      
+                      <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4 military-font tracking-[0.2em] text-xs">
+                        <button 
+                          className="bg-[#768E80] hover:bg-[#5C7365] text-white font-bold py-3.5 px-10 rounded-sm transition-all duration-300 shadow-md"
+                          onClick={() => document.getElementById('team-section')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                          КОМАНДА
+                        </button>
+                        <button 
+                          className="bg-transparent hover:bg-white/5 border border-[#768E80] text-[#E2EAE3] font-bold py-3.5 px-10 rounded-sm transition-all duration-300"
+                          onClick={() => document.getElementById('vision-section')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                          БАЧЕННЯ
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Покращений Блок статистики - у стриманому презентаційному стилі */}
+                    <div className="absolute -bottom-24 sm:-bottom-16 left-1/2 transform -translate-x-1/2 w-11/12 max-w-5xl bg-[#E9EBE4] border border-[#DCE3DB] rounded-sm shadow-xl py-6 px-4 sm:px-8 flex flex-col sm:flex-row justify-around items-center z-20 text-[#2B3830] gap-6 sm:gap-0">
+                      <div className="text-center">
+                        <p className="text-4xl font-black text-[#2B3830] mb-0.5 military-font">1951</p>
+                        <p className="text-[10px] font-bold tracking-widest text-[#5C6E62] military-font uppercase">РІК ЗАСНУВАННЯ МІСІЇ</p>
+                      </div>
+                      <div className="hidden sm:block h-10 w-[1px] bg-[#768E80]/30"></div>
+                      <div className="text-center">
+                        <p className="text-4xl font-black text-[#2B3830] mb-0.5 military-font">191+</p>
+                        <p className="text-[10px] font-bold tracking-widest text-[#5C6E62] military-font uppercase">КРАЇН СВІТУ</p>
+                      </div>
+                      <div className="hidden sm:block h-10 w-[1px] bg-[#768E80]/30"></div>
+                      <div className="text-center">
+                        <p className="text-4xl font-black text-[#2B3830] mb-0.5 military-font">1991</p>
+                        <p className="text-[10px] font-bold tracking-widest text-[#5C6E62] military-font uppercase">СЛУЖИМО В УКРАЇНІ З</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  {/* Секція "Бачення" - у стриманих тонах шавлії та піску */}
+                  <section id="vision-section" className="bg-[#E9EBE4]/50 pt-36 pb-20 px-4 sm:px-6 lg:px-8 border-b border-[#DCE3DB]">
+                    <div className="max-w-7xl mx-auto text-center">
+                        <div className="inline-block bg-[#768E80]/20 text-[#2B3830] font-bold text-[10px] px-6 py-1.5 border border-[#768E80]/40 rounded-sm mb-8 uppercase tracking-widest military-font">БАЧЕННЯ</div>
+                        <h2 className="text-3xl sm:text-5xl font-bold text-[#2B3830] max-w-4xl mx-auto leading-tight serif-accent italic mb-16">
+                            «Війна залишає рани не лише на тілі, а й на душі. Я вірю, що тільки Христос здатен дати справжнє зцілення.»
+                        </h2>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div className="bg-white border border-[#DCE3DB] rounded-sm p-8 shadow-sm relative overflow-hidden group hover:border-[#768E80] transition-colors duration-300">
+                                <div className="absolute top-0 right-0 w-10 h-10 bg-[#768E80]/10 flex items-center justify-center font-bold military-font text-xs text-[#768E80]">01</div>
+                                <h3 className="text-xl font-bold text-[#2B3830] mb-4 uppercase tracking-widest military-font">WIN</h3>
+                                <p className="text-[#5C6E62] text-sm leading-relaxed">Донести Євангеє до ветеранів через стосунки, свідчення та служіння.</p>
+                            </div>
+                            <div className="bg-white border border-[#DCE3DB] rounded-sm p-8 shadow-sm relative overflow-hidden group hover:border-[#768E80] transition-colors duration-300">
+                                <div className="absolute top-0 right-0 w-10 h-10 bg-[#768E80]/10 flex items-center justify-center font-bold military-font text-xs text-[#768E80]">02</div>
+                                <h3 className="text-xl font-bold text-[#2B3830] mb-4 uppercase tracking-widest military-font">BUILD</h3>
+                                <p className="text-[#5C6E62] text-sm leading-relaxed">Допомогти їм зростати у вірі, знайти сенс, спокій та стабільність.</p>
+                            </div>
+                            <div className="bg-white border border-[#DCE3DB] rounded-sm p-8 shadow-sm relative overflow-hidden group hover:border-[#768E80] transition-colors duration-300">
+                                <div className="absolute top-0 right-0 w-10 h-10 bg-[#768E80]/10 flex items-center justify-center font-bold military-font text-xs text-[#768E80]">03</div>
+                                <h3 className="text-xl font-bold text-[#2B3830] mb-4 uppercase tracking-widest military-font">SEND</h3>
+                                <p className="text-[#5C6E62] text-sm leading-relaxed">Надихати ставати світлом та прикладом відновлення у своїх громадах.</p>
+                            </div>
+                        </div>
+                    </div>
+                  </section>
+
+                  {/* Секція "Чому ветерани?" */}
+                  <section id="why-veterans-section" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#F4F6F4] max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center border-b border-[#DCE3DB]">
+                    <div className="lg:w-3/5">
+                        <p className="text-[#768E80] font-bold text-xs tracking-widest uppercase mb-4 military-font">★ ПРІОРИТЕТНИЙ НАПРЯМОК ★</p>
+                        <h2 className="text-4xl sm:text-5xl font-bold text-[#2B3830] mb-8 leading-tight military-font uppercase tracking-wide">Досягти ветеранів України надією Христа</h2>
+                        <p className="text-lg text-[#5C6E62] mb-6 leading-relaxed">
+                            Сьогодні в Україні понад <span className="font-bold text-[#2B3830] bg-[#768E80]/10 px-1">1,3 мільйона ветеранів</span> — багато з них мають глибокі зовнішні та внутрішні рани. Після війни ця цифра може зрости до <span className="font-bold text-[#2B3830] bg-[#768E80]/10 px-1">5-6 мільйонів</span>.
+                        </p>
+                        <div className="bg-[#E9EBE4] border-l-2 border-[#768E80] p-6 rounded-r-sm mb-6 text-[#5C6E62] font-medium leading-relaxed italic text-base">
+                            Багато ветеранів повертаються з болем, ізоляцією та внутрішньою пусткою. Церква — це місце, де вони можуть знайти Творця, відчути прийняття й спільноту, яка допоможе реінтегруватися в суспільство.
+                        </div>
+                        <p className="text-lg text-[#5C6E62] leading-relaxed">
+                            Саме тому я долучився до місії «Україна для Христа» — щоб бути поруч, слухати їх історії й вказувати на Того, хто здатен відновити.
+                        </p>
+                    </div>
+                    
+                    {/* Статистичні віджети у світлому делікатному стилі */}
+                    <div className="lg:w-2/5 flex flex-col gap-6 w-full">
+                        <div className="bg-white border border-[#DCE3DB] rounded-sm p-8 relative overflow-hidden shadow-sm">
+                            <div className="absolute top-0 left-0 w-[3px] h-full bg-[#768E80]"></div>
+                            <h3 className="text-5xl font-black text-[#768E80] mb-1 military-font">1.3 M</h3>
+                            <p className="text-[10px] font-bold text-[#5C6E62] uppercase tracking-widest military-font">Ветеранів сьогодні</p>
+                        </div>
+                        <div className="bg-white border border-[#DCE3DB] rounded-sm p-8 relative overflow-hidden shadow-sm">
+                            <div className="absolute top-0 left-0 w-[3px] h-full bg-[#A4B5A9]"></div>
+                            <h3 className="text-5xl font-black text-[#2B3830] mb-1 military-font">6.0 M</h3>
+                            <p className="text-[10px] font-bold text-[#5C6E62] uppercase tracking-widest military-font">Потенційно з родинами</p>
+                        </div>
+                    </div>
+                  </section>
+
+                  {/* Секція "Діяльність" - Світлі Тактичні Вкладки */}
+                  <section id="activities-section" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#E9EBE4]/20 border-b border-[#DCE3DB]">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="text-center mb-12">
+                            <p className="text-[#768E80] font-bold text-xs tracking-widest uppercase mb-2 military-font">★ НАШ СТРАТЕГІЧНИЙ ПЛАН ★</p>
+                            <h2 className="text-4xl sm:text-5xl font-bold text-[#2B3830] military-font uppercase tracking-widest">Наша діяльність</h2>
+                        </div>
+
+                        {/* Тактичні кнопки вкладок */}
+                        <div className="flex flex-wrap justify-center gap-3 military-font tracking-widest text-xs">
+                            <button 
+                                onClick={() => setActiveActivityTab('hospitals')} 
+                                className={`px-8 py-3.5 rounded-sm font-bold uppercase transition-all duration-200 border ${activeActivityTab === 'hospitals' ? 'bg-[#768E80] text-white border-[#768E80] shadow-sm' : 'bg-white text-[#5C6E62] border-[#DCE3DB] hover:border-[#768E80]'}`}
+                            >
+                                Госпіталі
+                            </button>
+                            <button 
+                                onClick={() => setActiveActivityTab('podcast')} 
+                                className={`px-8 py-3.5 rounded-sm font-bold uppercase transition-all duration-200 border ${activeActivityTab === 'podcast' ? 'bg-[#768E80] text-white border-[#768E80] shadow-sm' : 'bg-white text-[#5C6E62] border-[#DCE3DB] hover:border-[#768E80]'}`}
+                            >
+                                Подкаст
+                            </button>
+                            <button 
+                                onClick={() => setActiveActivityTab('retreats')} 
+                                className={`px-8 py-3.5 rounded-sm font-bold uppercase transition-all duration-200 border ${activeActivityTab === 'retreats' ? 'bg-[#768E80] text-white border-[#768E80] shadow-sm' : 'bg-white text-[#5C6E62] border-[#DCE3DB] hover:border-[#768E80]'}`}
+                            >
+                                Ретрит
+                            </button>
+                        </div>
+
+                        {/* Контент діяльності */}
+                        <div className="bg-white border border-[#DCE3DB] p-8 sm:p-12 min-h-[420px] relative shadow-sm">
+                            {/* Кутові декоративні маркування */}
+                            <div className="absolute top-4 left-4 w-3.5 h-3.5 border-t border-l border-[#768E80]"></div>
+                            <div className="absolute top-4 right-4 w-3.5 h-3.5 border-t border-r border-[#768E80]"></div>
+                            <div className="absolute bottom-4 left-4 w-3.5 h-3.5 border-b border-l border-[#768E80]"></div>
+                            <div className="absolute bottom-4 right-4 w-3.5 h-3.5 border-b border-r border-[#768E80]"></div>
+
+                            {activeActivityTab === 'hospitals' && (
+                                <div className="flex flex-col lg:flex-row gap-12 items-center">
+                                    <div className="lg:w-1/2">
+                                        <h3 className="text-3xl font-bold text-[#2B3830] mb-6 military-font uppercase tracking-wider">Турбота в госпіталях</h3>
+                                        <p className="text-lg text-[#5C6E62] leading-relaxed">
+                                            З командою відвідуємо хлопців в госпіталі, це дає можливість показати тим хто на шляху до відновлення що надія є і далі тільки рух та життя, це простір де ми маємо гарне спілкування та підтримку.
+                                        </p>
+                                    </div>
+                                    <div className="lg:w-1/2 w-full">
+                                        <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/5ED39F71-2AED-47D8-98A6-AE03BF842819_1_105_c.jpeg" className="rounded-sm w-full object-cover h-[350px] border border-[#DCE3DB] shadow-sm" alt="Госпіталі" />
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeActivityTab === 'podcast' && (
+                                <div className="flex flex-col lg:flex-row gap-12 items-center">
+                                    <div className="lg:w-1/2">
+                                        <h3 className="text-3xl font-bold text-[#2B3830] mb-6 military-font uppercase tracking-wider">Подкаст "Без броні"</h3>
+                                        <p className="text-lg text-[#5C6E62] leading-relaxed mb-8">
+                                            Відкриті розмови про віру та війну для тисяч воїнів у партнерстві з Українською Баптистською Теологічною Семінарією (УБТС).
+                                        </p>
+                                        <div className="flex flex-wrap gap-4 military-font tracking-widest text-[10px]">
+                                            <a href="https://youtube.com/playlist?list=PLF7PYvFUKJXKWFEcvs6UVisVNEZm91Sbm&si=VL_tu0xny7Ax20jd" target="_blank" rel="noopener noreferrer" className="bg-[#768E80] hover:bg-[#5C7365] text-white font-bold py-3.5 px-8 rounded-sm flex items-center transition-colors">
+                                                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                                                Дивитись всі епізоди
+                                            </a>
+                                            <button className="bg-white hover:bg-[#EBF0EC] text-[#2B3830] font-bold py-3.5 px-8 border border-[#DCE3DB] rounded-sm flex items-center transition-colors">
+                                                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                Свіжий випуск
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div className="lg:w-1/2 w-full">
+                                        <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/IMG_6519.jpeg" className="rounded-sm w-full object-cover h-[350px] border border-[#DCE3DB] shadow-sm" alt="Подкаст Без броні" />
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeActivityTab === 'retreats' && (
+                                <div className="flex flex-col gap-8">
+                                    {/* Інтерактивні підвкладки для Ретриту */}
+                                    <div className="flex border-b border-[#DCE3DB] pb-1 space-x-6 military-font text-xs tracking-widest font-bold">
+                                        <button 
+                                            onClick={() => setActiveRetreatSubTab('bukovel')}
+                                            className={`pb-3 transition-all relative ${activeRetreatSubTab === 'bukovel' ? 'text-[#768E80]' : 'text-[#5C6E62] hover:text-[#2B3830]'}`}
+                                        >
+                                            Ретрити в Буковелі
+                                            {activeRetreatSubTab === 'bukovel' && <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#768E80]"></div>}
+                                        </button>
+                                        <button 
+                                            onClick={() => setActiveRetreatSubTab('europe')}
+                                            className={`pb-3 transition-all relative ${activeRetreatSubTab === 'europe' ? 'text-[#768E80]' : 'text-[#5C6E62] hover:text-[#2B3830]'}`}
+                                        >
+                                            Вікенд в Європі
+                                            {activeRetreatSubTab === 'europe' && <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#768E80]"></div>}
+                                        </button>
+                                    </div>
+
+                                    {activeRetreatSubTab === 'bukovel' ? (
+                                        <div className="flex flex-col lg:flex-row gap-12">
+                                            <div className="lg:w-1/2">
+                                                <h3 className="text-3xl font-bold text-[#2B3830] mb-6 military-font uppercase tracking-wider">РЕТРИТИ В БУКОВЕЛІ: БЕЗПЕЧНИЙ ПРОСТІР</h3>
+                                                <p className="text-lg text-[#5C6E62] leading-relaxed mb-8">
+                                                    Це «коло своїх», де ветерани можуть по-справжньому розслабитися. Ми робимо це, щоб дати можливість відпочити від рутини та сірої буденності, перебуваючи в колі побратимів, які розуміють тебе без зайвих слів.
+                                                </p>
+                                                <ul className="space-y-4 font-semibold text-[#5C6E62]">
+                                                    <li className="flex items-center text-base">
+                                                        <span className="text-[#768E80] mr-3">★</span> Психологічне розвантаження у горах
+                                                    </li>
+                                                    <li className="flex items-center text-base">
+                                                        <span className="text-[#768E80] mr-3">★</span> Духовне відновлення та спільна молитва
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div className="lg:w-1/2 w-full">
+                                                {/* Ідеальне фокусування на нижній частині кадру (object-[center_90%]), щоб не обрізались обличчя внизу */}
+                                                <div className="h-[350px] w-full border border-[#DCE3DB] shadow-sm rounded-sm overflow-hidden">
+                                                    <Carousel slides={bukovelSlides} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        /* Оновлений Європейський ретрит: без лівої картки Буковелю, на повну ширину */
+                                        <div className="flex flex-col lg:flex-row gap-12 items-start">
+                                            
+                                            {/* Ліва частина: опис, цілі та цитата на 3/5 ширини */}
+                                            <div className="lg:w-3/5 flex flex-col justify-between h-full">
+                                                <div>
+                                                    <div className="inline-block bg-[#768E80]/20 text-[#2B3830] font-bold text-[10px] px-3 py-1 border border-[#768E80]/40 rounded-sm mb-4 uppercase tracking-widest military-font">
+                                                        ВОЗЗ'ЄДНАННЯ
+                                                    </div>
+                                                    <h3 className="text-3xl font-bold text-[#2B3830] mb-4 military-font uppercase tracking-wider leading-tight">ВІКЕНД В ЄВРОПІ: ПРОЕКТ ДОВГОСТРОКОВОГО ВПЛИВУ</h3>
+                                                    <p className="text-lg text-[#5C6E62] leading-relaxed mb-6">
+                                                        Цей проект створено з метою довгострокового впливу на ветеранів, щоб природно показати їм любов Христа через наше піклування і служіння. Це можливість створити надійне підґрунтя для більш масштабного служіння та стати важливою частиною екосистеми допомоги ветеранам з інвалідністю.
+                                                    </p>
+                                                    
+                                                    {/* Цитата / Блокквот */}
+                                                    <div className="border-l-4 border-[#768E80] bg-[#E9EBE4]/40 p-5 italic text-[#5C6E62] text-sm rounded-r-sm leading-relaxed mb-6">
+                                                        "Було несподівано і зворушливо чути, як хлопці ділися тим, що це можливість відволіктися від болю та знову відчути смак життя. Наша ціль — підтримати кожного на шляху до повного духовного та фізичного відновлення."
+                                                    </div>
+                                                </div>
+
+                                                <div className="border-t border-[#DCE3DB] pt-6 mt-4">
+                                                    <p className="text-xs font-bold text-[#768E80] uppercase tracking-wider mb-3 military-font">Наші цілі:</p>
+                                                    <ul className="space-y-4 font-semibold text-[#5C6E62] text-sm">
+                                                        <li className="flex items-start">
+                                                            <span className="text-[#768E80] mr-3 mt-1">★</span> 
+                                                            <span>Мати можливість довгострокового служіння та духовного впливу на ветерана через декілька спільних поїздок та побудова ветеранської спільноти.</span>
+                                                        </li>
+                                                        <li className="flex items-start">
+                                                            <span className="text-[#768E80] mr-3 mt-1">★</span> 
+                                                            <span>Стати частиною екосистеми допомоги ветеранам з інвалідністю, забезпечуючи надійну реінтеграцію.</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            {/* Права частина: Велика карусель європейських фотографій на 2/5 ширини */}
+                                            <div className="lg:w-2/5 w-full h-[450px] sm:h-[500px]">
+                                                <div className="w-full h-full relative rounded-sm overflow-hidden border border-[#DCE3DB] shadow-sm">
+                                                    <Carousel slides={europeSlides} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                  </section>
+
+                  {/* Секція "Команда" - Колективні досьє з вирівнюванням */}
+                  <section id="team-section" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                    <div className="text-center mb-16">
+                      <p className="text-[#768E80] font-bold text-xs tracking-widest uppercase mb-2 military-font">★ НАШІ СПІВРОБІТНИКИ ★</p>
+                      <h2 className="text-4xl sm:text-5xl font-bold text-[#2B3830] military-font uppercase tracking-widest">Наша команда</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {teamMembers.map((member, index) => (
+                        <div 
+                          key={member.id} 
+                          onClick={() => navigateToMember(member)}
+                          className={`bg-white border border-[#DCE3DB] rounded-sm overflow-hidden cursor-pointer transform transition duration-300 hover:-translate-y-1.5 hover:border-[#768E80] hover:shadow-md group flex flex-col justify-between
+                            ${index === 3 ? 'lg:col-start-1 lg:ml-[16.66%]' : ''} 
+                            ${index === 4 ? 'lg:col-start-2' : ''}`}
+                        >
+                          <div>
+                            {/* Фотографія */}
+                            <div className="h-80 w-full overflow-hidden bg-[#EBF0EC] border-b border-[#DCE3DB]">
+                              <img 
+                                src={member.image} 
+                                alt={member.name} 
+                                className={`w-full h-full object-cover transition duration-700 group-hover:scale-[1.03] ${member.objectPosition || 'object-center'}`}
+                                loading="lazy"
+                              />
+                            </div>
+                            <div className="pt-6 px-6 text-center">
+                              <h3 className="text-2xl font-bold text-[#2B3830] mb-1 military-font uppercase tracking-wider group-hover:text-[#768E80] transition-colors">{member.name}</h3>
+                              {member.role ? (
+                                <p className="text-[#768E80] font-bold text-[10px] uppercase tracking-[0.2em] military-font mb-1">{member.role}</p>
+                              ) : (
+                                <div className="h-4"></div>
+                              )}
+                            </div>
+                          </div>
+                          
+                          {/* Заклик до переходу */}
+                          <div className="pb-6 px-6 text-center mt-4">
+                            <span className="inline-flex items-center bg-[#E9EBE4] text-[#2B3830] font-bold text-[10px] uppercase tracking-widest military-font py-2 px-6 rounded-sm border border-[#DCE3DB] hover:bg-[#768E80] hover:text-white transition-all duration-200">
+                              {member.moreText}
+                              <svg className="ml-2 w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"></path>
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                </main>
+              ) : (
+                
+                /* Сторінка детального опису - Офіційний Військовий Профіль / Досьє */
+                <main className="max-w-4xl mx-auto px-4 py-12">
+                  <button 
+                    onClick={navigateToHome}
+                    className="flex items-center text-[#5C6E62] hover:text-[#2B3830] transition-colors mb-8 font-bold uppercase tracking-widest military-font text-xs"
+                  >
+                    <ArrowLeftIcon className="mr-2" />
+                    Повернутися на головну
+                  </button>
+                  
+                  <div className="bg-white border border-[#DCE3DB] rounded-sm shadow-sm overflow-hidden relative">
+                    {/* Тактична плашка профілю */}
+                    <div className="bg-[#E9EBE4] border-b border-[#DCE3DB] px-8 py-3.5 flex justify-between items-center">
+                        <span className="military-font text-[10px] font-bold uppercase tracking-[0.25em] text-[#2B3830]">★ ОФІЦІЙНИЙ ПРОФІЛЬ // SERVICE RECORD ★</span>
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#768E80]"></span>
+                    </div>
+
+                    {/* Велике фото з кадуванням 18% для Олександра */}
+                    <div className="h-[28rem] sm:h-[38rem] w-full relative border-b border-[#DCE3DB] bg-[#EBF0EC]">
+                      <img 
+                        src={selectedMember.image} 
+                        alt={selectedMember.name} 
+                        className={`w-full h-full object-cover ${selectedMember.objectPosition || 'object-center'}`}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#191C16]/90 via-transparent to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 p-8 text-white">
+                        <h1 className="text-4xl sm:text-5xl font-black mb-2 military-font uppercase tracking-wider drop-shadow-md">{selectedMember.name}</h1>
+                        <p className="text-base text-[#E9EBE4] font-bold uppercase tracking-widest military-font">{selectedMember.role || "Місіонер служіння"}</p>
+                      </div>
+                    </div>
+
+                    <div className="p-8 sm:p-12">
+                      <h2 className="text-xl font-bold text-[#2B3830] mb-6 military-font uppercase tracking-widest pb-2 border-b border-[#DCE3DB]">ІСТОРІЯ СЛУЖІННЯ</h2>
+                      
+                      {/* Опис з абзацами */}
+                      <div className="text-[#5C6E62] text-lg leading-relaxed mb-10 space-y-6 serif-accent italic">
+                        {selectedMember.description.split('\n\n').map((paragraph, index) => (
+                          <p key={index}>{paragraph}</p>
+                        ))}
+                      </div>
+
+                      {/* Кнопка "Детальніше про мою діяльність" */}
+                      {selectedMember.externalLink && (
+                        <div className="mb-10 military-font tracking-widest text-xs">
+                          <a 
+                            href={selectedMember.externalLink} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="inline-flex items-center justify-center bg-[#E9EBE4] hover:bg-[#768E80] text-[#2B3830] hover:text-white font-bold py-3.5 px-8 rounded-sm transition duration-300 border border-[#DCE3DB] shadow-sm uppercase"
+                          >
+                            Детальніше про мою діяльність
+                            <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                          </a>
+                        </div>
+                      )}
+                      
+                      {/* Заклик до підтримки */}
+                      <div className="bg-[#E9EBE4]/50 border border-[#DCE3DB] rounded-sm p-6 flex flex-col sm:flex-row justify-between items-center relative">
+                        <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-[#768E80]/40"></div>
+                        <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-[#768E80]/40"></div>
+
+                        <div className="mb-4 sm:mb-0 text-center sm:text-left">
+                          <h3 className="font-bold text-[#2B3830] military-font uppercase tracking-wider text-sm">Бажаєте підтримати це служіння?</h3>
+                          <p className="text-[#5C6E62] text-xs font-semibold">Ваша допомога є дуже важливою для відновлення бійців.</p>
+                        </div>
+                        <button className="bg-[#768E80] hover:bg-[#5C7365] text-white font-bold py-3 px-8 uppercase tracking-widest text-[10px] rounded-sm military-font w-full sm:w-auto">
+                          Підтримати {selectedMember.name.split(' ')[0] === 'Сім\'я' ? 'їх' : 'його'}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </main>
+              )}
+
+              {/* Тактичний преміальний футер у стилі Slidesgo */}
+              <footer className="bg-[#2B3830] text-[#A4B5A9] py-12 border-t border-[#DCE3DB] tracking-wider military-font text-xs">
+                <div className="max-w-5xl mx-auto px-4 text-center">
+                  <div className="flex justify-center space-x-1.5 mb-6 text-[#768E80]">
+                    <span>★</span>
+                    <span>★</span>
+                    <span>★</span>
+                  </div>
+                  <p className="uppercase font-bold tracking-[0.25em] text-[#F4F6F4] mb-2">Military Ministry Ukraine // CRU</p>
+                  <p className="text-[10px] text-[#A4B5A9]/70">© 2026 Всі права захищено. Слава Україні!</p>
+                </div>
+              </footer>
+            </div>
+          );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>        const { useState, useEffect } = React;
+
+        // Дані команди
+        const teamMembers = [
+          {
+            id: 'pikylik',
+            name: 'Сім\'я  Пікуліків',
+            role: 'Роман — лідер служіння',
+            moreText: 'Досьє служіння...',
+            image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/pikylik.JPG',
+            objectPosition: 'object-center',
+            description: `«Ми з Женікою прийшли до Бога через місію CRU. Вона стала штатною співробітницею місії на повний час у 2003 році, а я — у 2014-му. Ми познайомилися, коли я служив в армії під час війни, і після завершення моєї служби мы одружилися. До 2019 року ми служили студентам, а відтоді — служимо військовим. З того часу наше життя міцно пов'язане з армією та зі служінням солдатам і ветеранам.»`
+          },
+          {
+            id: 'yazvinsky',
+            name: 'Сім\'я Язвінських',
+            role: '',
+            moreText: 'Досьє служіння...',
+            image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/IMG_6645.JPG',
+            objectPosition: 'object-center',
+            description: 'Детальна інформація про служіння сім\'ї Язвінських буде розміщена тут. Ви можете додати детальний опис діяльності цієї сім\'ї, розповісти їхню історію, як вони прийшли до цього служіння, і які проекти вони зараз ведуть.'
+          },
+          {
+            id: 'pecheuz',
+            name: 'Сім\'я Печеуз',
+            role: '',
+            moreText: 'Досьє служіння...',
+            image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/pecheuz.jpg',
+            objectPosition: 'object-center',
+            description: 'Детальна інформація про служіння сім\'ї Печеуз буде розміщена тут. Ви можете додати детальний опис діяльності цієї сім\'ї, розповісти їхню історію, як вони прийшли до цього служіння, і які проекти они зараз ведуть.'
+          },
+          {
+            id: 'shevchenko',
+            name: 'Сім\'я Шевченків',
+            role: '',
+            moreText: 'Досьє служіння...',
+            image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/shevchenko.jpg',
+            externalLink: 'https://k-shevchenko.com/#letters',
+            objectPosition: 'object-center',
+            description: `Вітаємо вас з України! Мене звати Костя, і ми з дружиною Ланою є місіонерами студентського служіння «Україна для Христа» (Campus Crusade for Christ International). Ми обидва прийшли до Господа під час навчання через студентське служіння. Ми довго були волонтерами, будуючи духовні рухи в наших університетах, і врешті прийняли тверде рішення присвятити життя повночасному служінню. Сьогодні ми також неймовірно благословенні нашим маленьким сином Назаріком.
+
+З початком повномасштабної війни проти Росії мене мобілізували до Збройних Сил України. Перші шість місяців я провів на передовій, стикаючись із суворими реаліями бойових дій. З Божої милості та завдяки молитвам багатьох, мене згодом перевели на небойову посаду у військовому штабі в моєму рідному місті Одесі. Цей період став часом глибокого духовного зростання. Нещодавно я завершив активну військову службу, що дозволило мені повернутися до місіонерського покликання. Лана наразі працює в іншій місії, яка підтримує жертв війни та військових.
+
+Бог дивовижним чином розширює мій вплив. Хоча я продовжую служити студентам, мій досвід ветерана поклав на серце гострий тягар служіння військовим та ветеранам. Вони унікальним чином зіткнулися з темрявою та травмами війни, і зараз як ніколи потребують надії Євангелія. Щоб вірно слідувати цьому покликанню, я знаходжусь у стратегічному переході: до кінця 2026 року я частково служу як лідер команди Campus Одеса і частково запускаю нове служіння ветеранам. З січня 2027 року я повністю перейду до служіння ветеранам.`
+          },
+          {
+            id: 'kilyushik',
+            name: 'Олександр Килюшик',
+            role: '',
+            moreText: 'Досьє Олександра...',
+            image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/IMG_6525.JPG',
+            externalLink: 'https://aleksandrkilusik-blip.github.io/kyliushyk-news/index.html#activity',
+            objectPosition: 'object-[center_18%]', 
+            description: `Мене звати Олександр. Під час навчання в університеті я прийшов до Христа завдяки служінню CRU — один зі співробітників місії поділився зі мною Євангелієм. Цей момент став для мене духовним народженням і повністю змінив напрямок мого життя.
+
+Я деякий час працював у сфері продажів. Хоча війна на Донбасі вже тривала, життя для багатьох залишалося звичним. Але повномасштабне вторгнення 2022 року змінило все. Мене мобілізували до Збройних Сил України, і я служив розвідником у штурмовій бригаді. Під час одного з бойових завдань я отримав важке поранення і втратив кінцівку.
+
 Під час відновлення та реабілітації я познайомився з бачатьма побратимами, які також пережили втрати та перебували в пошуку сенсу, надії й спільноти. Бог почав глибоко працювати в моєму серці, і я зрозумів, що не можу мовчати — я хочу йти поруч з тими, хто страждає.
 
 Саме тому я приєднався до місії «Україна для Христа» (CRU), щоб ділитися Євангелієм із ветеранами — тими, хто поранений тілом і душею, але відкритий до істини. Лише Христос може зцілити найглибші рани.`
