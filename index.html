@@ -97,7 +97,7 @@
           }
         ];
 
-        // Декоративний розділювач ( chevron / star )
+        // Декоративний розділювач ( star )
         const MilitaryDivider = ({ title }) => (
           <div className="flex items-center justify-center my-12 max-w-5xl mx-auto px-4">
             <div className="flex-grow h-[1px] bg-[#768E80]/30"></div>
@@ -115,7 +115,7 @@
         const ChevronDownIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>;
         const ArrowLeftIcon = ({ className }) => <svg xmlns="http://www.w3.org/2000/svg" className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>;
 
-        // Оновлені слайди для каруселі Буковелю з вашими новими файлами
+        // Слайди для каруселі Буковелю з вашими новими файлами
         const bukovelSlides = [
           { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retritb.jpeg', position: 'object-center' },
           { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retritb1.jpeg', position: 'object-center' },
@@ -150,12 +150,12 @@
           };
 
           return (
-            <div className="relative w-full h-full group overflow-hidden rounded-sm bg-[#EBF0EC]">
+            <div className="relative w-full h-full group overflow-hidden bg-[#EBF0EC]">
               {/* Зображення */}
               {slides.map((slide, idx) => (
                 <div 
                   key={idx}
-                  className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
                 >
                   <img 
                     src={slide.url} 
@@ -168,9 +168,9 @@
               {/* Стрілочка вліво */}
               <button 
                 onClick={prevSlide}
-                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-2 rounded-full transition opacity-0 group-hover:opacity-100 focus:opacity-100"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-[#768E80] text-white w-10 h-10 flex items-center justify-center rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
@@ -178,20 +178,20 @@
               {/* Стрілочка вправо */}
               <button 
                 onClick={nextSlide}
-                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-2 rounded-full transition opacity-0 group-hover:opacity-100 focus:opacity-100"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-[#768E80] text-white w-10 h-10 flex items-center justify-center rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
 
               {/* Крапки індикатори знизу */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex space-x-2.5">
                 {slides.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
-                    className={`w-2 h-2 rounded-full transition-all ${idx === currentIndex ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/80'}`}
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-white scale-125' : 'bg-white/40 hover:bg-white/70'}`}
                   />
                 ))}
               </div>
@@ -411,7 +411,7 @@
                         </div>
 
                         {/* Тактичні кнопки вкладок */}
-                        <div className="flex flex-wrap justify-center gap-3 military-font tracking-widest text-xs">
+                        <div className="flex flex-wrap justify-center gap-3 military-font tracking-widest text-xs mb-10">
                             <button 
                                 onClick={() => setActiveActivityTab('hospitals')} 
                                 className={`px-8 py-3.5 rounded-sm font-bold uppercase transition-all duration-200 border ${activeActivityTab === 'hospitals' ? 'bg-[#768E80] text-white border-[#768E80] shadow-sm' : 'bg-white text-[#5C6E62] border-[#DCE3DB] hover:border-[#768E80]'}`}
@@ -432,118 +432,135 @@
                             </button>
                         </div>
 
-                        {/* Контент діяльності */}
-                        <div className="bg-white border border-[#DCE3DB] p-8 sm:p-12 min-h-[420px] relative shadow-sm">
+                        {/* Кнопки підвкладок для Ретриту винесено на рівень вище */}
+                        {activeActivityTab === 'retreats' && (
+                            <div className="flex justify-center border-b border-[#DCE3DB] pb-1 space-x-6 military-font text-xs tracking-widest font-bold mb-8 max-w-xs mx-auto">
+                                <button 
+                                    onClick={() => setActiveRetreatSubTab('bukovel')}
+                                    className={`pb-3 transition-all relative ${activeRetreatSubTab === 'bukovel' ? 'text-[#768E80]' : 'text-[#5C6E62] hover:text-[#2B3830]'}`}
+                                >
+                                    Ретрити в Буковелі
+                                    {activeRetreatSubTab === 'bukovel' && <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#768E80]"></div>}
+                                </button>
+                                <button 
+                                    onClick={() => setActiveRetreatSubTab('europe')}
+                                    className={`pb-3 transition-all relative ${activeRetreatSubTab === 'europe' ? 'text-[#768E80]' : 'text-[#5C6E62] hover:text-[#2B3830]'}`}
+                                >
+                                    Вікенд в Європі
+                                    {activeRetreatSubTab === 'europe' && <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#768E80]"></div>}
+                                </button>
+                            </div>
+                        )}
+
+                        {/* Контент діяльності з повнорозмірною каруселлю та текстом зліва як на скріншоті */}
+                        <div className="bg-[#2B3830] text-white rounded-sm relative shadow-md overflow-hidden flex flex-col lg:flex-row min-h-[480px]">
                             {/* Кутові декоративні маркування */}
-                            <div className="absolute top-4 left-4 w-3.5 h-3.5 border-t border-l border-[#768E80]"></div>
-                            <div className="absolute top-4 right-4 w-3.5 h-3.5 border-t border-r border-[#768E80]"></div>
-                            <div className="absolute bottom-4 left-4 w-3.5 h-3.5 border-b border-l border-[#768E80]"></div>
-                            <div className="absolute bottom-4 right-4 w-3.5 h-3.5 border-b border-r border-[#768E80]"></div>
+                            <div className="absolute top-4 left-4 w-3.5 h-3.5 border-t border-l border-[#768E80] z-20 pointer-events-none"></div>
+                            <div className="absolute top-4 right-4 w-3.5 h-3.5 border-t border-r border-[#768E80] z-20 pointer-events-none"></div>
+                            <div className="absolute bottom-4 left-4 w-3.5 h-3.5 border-b border-l border-[#768E80] z-20 pointer-events-none"></div>
+                            <div className="absolute bottom-4 right-4 w-3.5 h-3.5 border-b border-r border-[#768E80] z-20 pointer-events-none"></div>
 
                             {activeActivityTab === 'hospitals' && (
-                                <div className="flex flex-col lg:flex-row gap-12 items-center">
-                                    <div className="lg:w-1/2">
-                                        <h3 className="text-3xl font-bold text-[#2B3830] mb-6 military-font uppercase tracking-wider">Турбота в госпіталях</h3>
-                                        <p className="text-lg text-[#5C6E62] leading-relaxed">
+                                <React.Fragment>
+                                    {/* Ліва текстова колонка */}
+                                    <div className="lg:w-[45%] p-8 sm:p-12 flex flex-col justify-center relative">
+                                        <div className="inline-block bg-[#768E80]/20 text-[#A4B5A9] font-bold text-[10px] px-3 py-1 border border-[#768E80]/40 rounded-sm mb-4 uppercase tracking-widest military-font max-w-max">
+                                            ГОСПІТАЛІ
+                                        </div>
+                                        <h3 className="text-3xl sm:text-4xl font-black text-[#F4F6F4] mb-6 military-font uppercase tracking-wider">Турбота в госпіталях</h3>
+                                        <p className="text-lg text-[#E2EAE3] leading-relaxed mb-6">
                                             З командою відвідуємо хлопців в госпіталі, це дає можливість показати тим хто на шляху до відновлення що надія є і далі тільки рух та життя, це простір де ми маємо гарне спілкування та підтримку.
                                         </p>
                                     </div>
-                                    <div className="lg:w-1/2 w-full">
-                                        <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/5ED39F71-2AED-47D8-98A6-AE03BF842819_1_105_c.jpeg" className="rounded-sm w-full object-cover h-[350px] border border-[#DCE3DB] shadow-sm" alt="Госпіталі" />
+                                    {/* Права повнорозмірна картинка */}
+                                    <div className="lg:w-[55%] h-[350px] lg:h-auto min-h-[400px] relative">
+                                        <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/5ED39F71-2AED-47D8-98A6-AE03BF842819_1_105_c.jpeg" className="w-full h-full object-cover" alt="Госпіталі" />
                                     </div>
-                                </div>
+                                </React.Fragment>
                             )}
 
                             {activeActivityTab === 'podcast' && (
-                                <div className="flex flex-col lg:flex-row gap-12 items-center">
-                                    <div className="lg:w-1/2">
-                                        <h3 className="text-3xl font-bold text-[#2B3830] mb-6 military-font uppercase tracking-wider">Подкаст "Без броні"</h3>
-                                        <p className="text-lg text-[#5C6E62] leading-relaxed mb-8">
-                                            Відкриті розмови про віру та війну для тисяч воїнів у партнерстві з Українською Баптистською Теологічною Семінарією (УБТС).
-                                        </p>
+                                <React.Fragment>
+                                    {/* Ліва текстова колонка */}
+                                    <div className="lg:w-[45%] p-8 sm:p-12 flex flex-col justify-between relative">
+                                        <div>
+                                            <div className="inline-block bg-[#768E80]/20 text-[#A4B5A9] font-bold text-[10px] px-3 py-1 border border-[#768E80]/40 rounded-sm mb-4 uppercase tracking-widest military-font max-w-max">
+                                                ПОДКАСТ
+                                            </div>
+                                            <h3 className="text-3xl sm:text-4xl font-black text-[#F4F6F4] mb-6 military-font uppercase tracking-wider">Подкаст "Без броні"</h3>
+                                            <p className="text-lg text-[#E2EAE3] leading-relaxed mb-8">
+                                                Відкриті розмови про віру та війну для тисяч воїнів у партнерстві з Українською Баптистською Теологічною Семінарією (УБТС).
+                                            </p>
+                                        </div>
                                         <div className="flex flex-wrap gap-4 military-font tracking-widest text-[10px]">
                                             <a href="https://youtube.com/playlist?list=PLF7PYvFUKJXKWFEcvs6UVisVNEZm91Sbm&si=VL_tu0xny7Ax20jd" target="_blank" rel="noopener noreferrer" className="bg-[#768E80] hover:bg-[#5C7365] text-white font-bold py-3.5 px-8 rounded-sm flex items-center transition-colors">
-                                                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356-2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                                                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
                                                 Дивитись всі епізоди
                                             </a>
-                                            <button className="bg-white hover:bg-[#EBF0EC] text-[#2B3830] font-bold py-3.5 px-8 border border-[#DCE3DB] rounded-sm flex items-center transition-colors">
-                                                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            <button className="bg-transparent hover:bg-white/5 text-[#E9EBE4] font-bold py-3.5 px-8 border border-[#768E80] rounded-sm flex items-center transition-colors">
+                                                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                                 Свіжий випуск
                                             </button>
                                         </div>
                                     </div>
-                                    <div className="lg:w-1/2 w-full">
-                                        <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/IMG_6519.jpeg" className="rounded-sm w-full object-cover h-[350px] border border-[#DCE3DB] shadow-sm" alt="Подкаст Без броні" />
+                                    {/* Права повнорозмірна картинка */}
+                                    <div className="lg:w-[55%] h-[350px] lg:h-auto min-h-[400px] relative">
+                                        <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/IMG_6519.jpeg" className="w-full h-full object-cover" alt="Подкаст Без броні" />
                                     </div>
-                                </div>
+                                </React.Fragment>
                             )}
 
                             {activeActivityTab === 'retreats' && (
-                                <div className="flex flex-col gap-8">
-                                    {/* Інтерактивні підвкладки для Ретриту */}
-                                    <div className="flex border-b border-[#DCE3DB] pb-1 space-x-6 military-font text-xs tracking-widest font-bold">
-                                        <button 
-                                            onClick={() => setActiveRetreatSubTab('bukovel')}
-                                            className={`pb-3 transition-all relative ${activeRetreatSubTab === 'bukovel' ? 'text-[#768E80]' : 'text-[#5C6E62] hover:text-[#2B3830]'}`}
-                                        >
-                                            Ретрити в Буковелі
-                                            {activeRetreatSubTab === 'bukovel' && <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#768E80]"></div>}
-                                        </button>
-                                        <button 
-                                            onClick={() => setActiveRetreatSubTab('europe')}
-                                            className={`pb-3 transition-all relative ${activeRetreatSubTab === 'europe' ? 'text-[#768E80]' : 'text-[#5C6E62] hover:text-[#2B3830]'}`}
-                                        >
-                                            Вікенд в Європі
-                                            {activeRetreatSubTab === 'europe' && <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#768E80]"></div>}
-                                        </button>
-                                    </div>
-
+                                <React.Fragment>
                                     {activeRetreatSubTab === 'bukovel' ? (
-                                        <div className="flex flex-col lg:flex-row gap-12">
-                                            <div className="lg:w-1/2">
-                                                <h3 className="text-3xl font-bold text-[#2B3830] mb-6 military-font uppercase tracking-wider">РЕТРИТИ В БУКОВЕЛІ: БЕЗПЕЧНИЙ ПРОСТІР</h3>
-                                                <p className="text-lg text-[#5C6E62] leading-relaxed mb-8">
-                                                    Це «коло своїх», де ветерани можуть по-справжньому розслабитися. Ми робимо це, щоб дати можливість відпочити від рутини та сірої буденності, перебуваючи в колі побратимів, які розуміють тебе без зайвих слів.
-                                                </p>
-                                                <ul className="space-y-4 font-semibold text-[#5C6E62]">
-                                                    <li className="flex items-center text-base">
-                                                        <span className="text-[#768E80] mr-3">★</span> Психологічне розвантаження у горах
+                                        <React.Fragment>
+                                            {/* Ліва текстова колонка */}
+                                            <div className="lg:w-[45%] p-8 sm:p-12 flex flex-col justify-between relative">
+                                                <div>
+                                                    <div className="inline-block bg-[#768E80]/20 text-[#A4B5A9] font-bold text-[10px] px-3 py-1 border border-[#768E80]/40 rounded-sm mb-4 uppercase tracking-widest military-font max-w-max">
+                                                        БУКОВЕЛЬ
+                                                    </div>
+                                                    <h3 className="text-3xl sm:text-4xl font-black text-[#F4F6F4] mb-6 military-font uppercase tracking-wider">РЕТРИТИ В БУКОВЕЛІ: БЕЗПЕЧНИЙ ПРОСТІР</h3>
+                                                    <p className="text-lg text-[#E2EAE3] leading-relaxed mb-8">
+                                                        Це «коло своїх», де ветерани можуть по-справжньому розслабитися. Ми робимо це, щоб дати можливість відпочити від рутини та сірої буденності, перебуваючи в колі побратимів, які розуміють тебе без зайвих слів.
+                                                    </p>
+                                                </div>
+                                                <ul className="space-y-4 font-semibold text-[#A4B5A9] text-sm">
+                                                    <li className="flex items-center">
+                                                        <span className="text-white mr-3">★</span> Психологічне розвантаження у горах
                                                     </li>
-                                                    <li className="flex items-center text-base">
-                                                        <span className="text-[#768E80] mr-3">★</span> Духовне відновлення та спільна молитва
+                                                    <li className="flex items-center">
+                                                        <span className="text-white mr-3">★</span> Духовне відновлення та спільна молитва
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div className="lg:w-1/2 w-full">
-                                                <div className="h-[350px] w-full border border-[#DCE3DB] shadow-sm rounded-sm overflow-hidden">
-                                                    <Carousel slides={bukovelSlides} />
-                                                </div>
+                                            {/* Права повнорозмірна карусель Буковелю з вашими новими слайдами */}
+                                            <div className="lg:w-[55%] h-[400px] lg:h-auto min-h-[450px] relative">
+                                                <Carousel slides={bukovelSlides} />
                                             </div>
-                                        </div>
+                                        </React.Fragment>
                                     ) : (
-                                        /* Оновлений Європейський ретрит: без лівої картки Буковелю, на повну ширину */
-                                        <div className="flex flex-col lg:flex-row gap-12 items-start">
-                                            
-                                            {/* Ліва частина: опис, цілі та цитата на 3/5 ширини */}
-                                            <div className="lg:w-3/5 flex flex-col justify-between h-full">
+                                        <React.Fragment>
+                                            {/* Ліва текстова колонка */}
+                                            <div className="lg:w-[45%] p-8 sm:p-12 flex flex-col justify-between relative">
                                                 <div>
-                                                    <div className="inline-block bg-[#768E80]/20 text-[#2B3830] font-bold text-[10px] px-3 py-1 border border-[#768E80]/40 rounded-sm mb-4 uppercase tracking-widest military-font">
+                                                    <div className="inline-block bg-[#768E80]/20 text-[#A4B5A9] font-bold text-[10px] px-3 py-1 border border-[#768E80]/40 rounded-sm mb-4 uppercase tracking-widest military-font max-w-max">
                                                         ВОЗЗ'ЄДНАННЯ
                                                     </div>
-                                                    <h3 className="text-3xl font-bold text-[#2B3830] mb-4 military-font uppercase tracking-wider leading-tight">ВІКЕНД В ЄВРОПІ: ПРОЕКТ ДОВГОСТРОКОВОГО ВПЛИВУ</h3>
-                                                    <p className="text-lg text-[#5C6E62] leading-relaxed mb-6">
+                                                    <h3 className="text-3xl sm:text-4xl font-black text-[#F4F6F4] mb-4 military-font uppercase tracking-wider leading-tight">ВІКЕНД В ЄВРОПІ: ПРОЕКТ ДОВГОСТРОКОВОГО ВПЛИВУ</h3>
+                                                    <p className="text-base text-[#E2EAE3] leading-relaxed mb-6">
                                                         Цей проект створено з метою довгострокового впливу на ветеранів, щоб природно показати їм любов Христа через наше піклування і служіння. Це можливість створити надійне підґрунтя для більш масштабного служіння та стати важливою частиною екосистеми допомоги ветеранам з інвалідністю.
                                                     </p>
                                                     
-                                                    {/* Цитата / Блокквот */}
-                                                    <div className="border-l-4 border-[#768E80] bg-[#E9EBE4]/40 p-5 italic text-[#5C6E62] text-sm rounded-r-sm leading-relaxed mb-6">
+                                                    {/* Цитата */}
+                                                    <div className="border-l-4 border-[#768E80] bg-[#768E80]/10 p-5 italic text-[#E2EAE3] text-sm rounded-r-sm leading-relaxed mb-6">
                                                         "Було несподівано і зворушливо чути, як хлопці ділися тим, що це можливість відволіктися від болю та знову відчути смак життя. Наша ціль — підтримати кожного на шляху до повного духовного та фізичного відновлення."
                                                     </div>
                                                 </div>
 
-                                                <div className="border-t border-[#DCE3DB] pt-6 mt-4">
-                                                    <p className="text-xs font-bold text-[#768E80] uppercase tracking-wider mb-3 military-font">Наші цілі:</p>
-                                                    <ul className="space-y-4 font-semibold text-[#5C6E62] text-sm">
+                                                <div className="border-t border-[#768E80]/30 pt-6 mt-4">
+                                                    <p className="text-xs font-bold text-[#A4B5A9] uppercase tracking-wider mb-3 military-font">Наші цілі:</p>
+                                                    <ul className="space-y-4 font-semibold text-[#E2EAE3] text-sm">
                                                         <li className="flex items-start">
                                                             <span className="text-[#768E80] mr-3 mt-1">★</span> 
                                                             <span>Мати можливість довгострокового служіння та духовного впливу на ветерана через декілька спільних поїздок та побудова ветеранської спільноти.</span>
@@ -555,16 +572,13 @@
                                                     </ul>
                                                 </div>
                                             </div>
-
-                                            {/* Права частина: Велика карусель європейських фотографій на 2/5 ширини */}
-                                            <div className="lg:w-2/5 w-full h-[450px] sm:h-[500px]">
-                                                <div className="w-full h-full relative rounded-sm overflow-hidden border border-[#DCE3DB] shadow-sm">
-                                                    <Carousel slides={europeSlides} />
-                                                </div>
+                                            {/* Права повнорозмірна карусель європейського вікенду */}
+                                            <div className="lg:w-[55%] h-[400px] lg:h-auto min-h-[450px] relative">
+                                                <Carousel slides={europeSlides} />
                                             </div>
-                                        </div>
+                                        </React.Fragment>
                                     )}
-                                </div>
+                                </React.Fragment>
                             )}
                         </div>
                     </div>
