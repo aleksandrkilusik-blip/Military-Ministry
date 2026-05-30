@@ -63,7 +63,7 @@
             moreText: 'Досьє служіння...',
             image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/pecheuz.jpg',
             objectPosition: 'object-center',
-            description: 'Детальна інформація про служіння сім\'ї Печеуз буде розміщена тут. Ви можете додати детальний опис діяльності цієї сім\'ї, розповісти їхню історію, як вони прийшли до цього служіння, і які проекти они зараз ведуть.'
+            description: 'Детальна інформація про служіння сім\'ї Печеуз буде розміщена тут. Ви можете додати детальний опис діяльності цієї сім\'ї, розповісти їхню історію, як они прийшли до цього служіння, і які проекти они зараз ведуть.'
           },
           {
             id: 'shevchenko',
@@ -115,17 +115,17 @@
         const ChevronDownIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>;
         const ArrowLeftIcon = ({ className }) => <svg xmlns="http://www.w3.org/2000/svg" className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>;
 
-        // Слайди для каруселі Буковелю з вашими новими файлами
+        // Оновлені слайди для каруселі Буковелю з вашими новими файлами
         const bukovelSlides = [
-          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retritb.jpeg', position: 'object-center' },
-          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retritb1.jpeg', position: 'object-center' },
-          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retritB2.jpeg', position: 'object-center' }
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retritb.jpeg', position: 'object-center', fit: 'contain' },
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retritb1.jpeg', position: 'object-center', fit: 'contain' },
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retritB2.jpeg', position: 'object-center', fit: 'contain' }
         ];
 
         const europeSlides = [
-          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit.jpeg', position: 'object-center' },
-          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit3.jpeg', position: 'object-[center_25%]' },
-          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit2.jpeg', position: 'object-[center_20%]' }
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit.jpeg', position: 'object-center', fit: 'contain' },
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit3.jpeg', position: 'object-center', fit: 'contain' },
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit2.jpeg', position: 'object-center', fit: 'contain' }
         ];
 
         // Компонент каруселі з підтримкою автопрокрутки та індивідуального кадрування
@@ -150,7 +150,7 @@
           };
 
           return (
-            <div className="relative w-full h-full group overflow-hidden bg-[#EBF0EC]">
+            <div className="relative w-full h-full group overflow-hidden bg-[#2B3830]">
               {/* Зображення */}
               {slides.map((slide, idx) => (
                 <div 
@@ -160,7 +160,7 @@
                   <img 
                     src={slide.url} 
                     alt={`Слайд ${idx + 1}`} 
-                    className={`w-full h-full object-cover ${slide.position || 'object-center'}`}
+                    className={`w-full h-full ${slide.fit === 'contain' ? 'object-contain' : 'object-cover'} ${slide.position || 'object-center'}`}
                   />
                 </div>
               ))}
@@ -497,7 +497,7 @@
                                                 <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
                                                 Дивитись всі епізоди
                                             </a>
-                                            <button className="bg-transparent hover:bg-white/5 text-[#E9EBE4] font-bold py-3.5 px-8 border border-[#768E80] rounded-sm flex items-center transition-colors">
+                                            <button className="bg-white hover:bg-[#EBF0EC] text-[#2B3830] font-bold py-3.5 px-8 border border-[#DCE3DB] rounded-sm flex items-center transition-colors">
                                                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                                 Свіжий випуск
                                             </button>
