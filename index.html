@@ -88,19 +88,17 @@
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-20 items-center">
                   <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={navigateToHome}>
-                     <div className="font-bold text-xl leading-tight">
-                       <span className="text-blue-600">ВЕТЕРАНАМ</span><br/>
-                       <span className="text-yellow-500">УКРАЇНИ</span>
+                     <div className="font-bold text-xl leading-tight uppercase">
+                       <span className="text-blue-600">MILITARY</span><br/>
+                       <span className="text-yellow-500">MINISTRY</span>
                      </div>
                   </div>
 
                   <div className="hidden lg:flex space-x-6 text-sm font-semibold text-gray-600 tracking-wide">
-                    <a href="#" className="hover:text-blue-600 transition">МІЙ ШЛЯХ</a>
+                    <a href="#" className="hover:text-blue-600 transition">КОМАНДА</a>
                     <a href="#" className="hover:text-blue-600 transition">БАЧЕННЯ</a>
                     <a href="#" className="hover:text-blue-600 transition">ЧОМУ ВЕТЕРАНИ?</a>
                     <a href="#" className="hover:text-blue-600 transition">ДІЯЛЬНІСТЬ</a>
-                    <a href="#" className="hover:text-blue-600 transition">ПІДТРИМКА</a>
-                    <a href="#" className="hover:text-blue-600 transition">МОЛИТОВНІ ЛИСТИ</a>
                   </div>
 
                   <div className="hidden lg:flex items-center space-x-4">
@@ -112,7 +110,7 @@
                       <MoonIcon />
                     </button>
                     <button className="bg-[#FFCA28] hover:bg-yellow-500 text-slate-900 font-bold py-2.5 px-6 rounded-full transition duration-300 shadow-md">
-                      Стати партнером
+                      Підтримати нас
                     </button>
                   </div>
 
@@ -126,11 +124,12 @@
 
               {isMobileMenuOpen && (
                 <div className="lg:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-4 space-y-1 shadow-lg">
-                  <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md">МІЙ ШЛЯХ</a>
-                  <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md">БАЧЕННЯ</a>
                   <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md">КОМАНДА</a>
+                  <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md">БАЧЕННЯ</a>
+                  <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md">ЧОМУ ВЕТЕРАНИ?</a>
+                  <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md">ДІЯЛЬНІСТЬ</a>
                   <button className="mt-4 w-full bg-[#FFCA28] text-slate-900 font-bold py-3 px-6 rounded-full">
-                    Стати партнером
+                    Підтримати нас
                   </button>
                 </div>
               )}
@@ -159,11 +158,14 @@
                       </p>
                       
                       <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-                        <button className="bg-[#FFCA28] hover:bg-yellow-500 text-slate-900 font-bold text-lg py-4 px-10 rounded-xl transition duration-300 shadow-lg">
-                          Стати партнером
+                        <button 
+                          className="bg-[#FFCA28] hover:bg-yellow-500 text-slate-900 font-bold text-lg py-4 px-10 rounded-xl transition duration-300 shadow-lg"
+                          onClick={() => document.getElementById('team-section')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                          Команда
                         </button>
                         <button className="bg-transparent border border-gray-400 text-white hover:bg-white/10 font-medium text-lg py-4 px-10 rounded-xl transition duration-300">
-                          Останні новини
+                          Бачення
                         </button>
                       </div>
                     </div>
@@ -186,7 +188,7 @@
                     </div>
                   </section>
 
-                  <section className="pt-32 sm:pt-40 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                  <section id="team-section" className="pt-32 sm:pt-40 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                     <div className="text-center mb-16">
                       <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Наша команда</h2>
                       <div className="w-24 h-1 bg-[#FFCA28] mx-auto rounded-full"></div>
