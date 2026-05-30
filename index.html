@@ -34,7 +34,7 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState } = React;
+        const { useState, useEffect } = React;
 
         // Дані команди
         const teamMembers = [
@@ -115,12 +115,95 @@
         const ChevronDownIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>;
         const ArrowLeftIcon = ({ className }) => <svg xmlns="http://www.w3.org/2000/svg" className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>;
 
+        // Слайди для каруселей діяльності
+        const bukovelSlides = [
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/mounting.jpeg', position: 'object-[center_90%]' },
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit1.jpeg', position: 'object-center' }
+        ];
+
+        const europeSlides = [
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit.jpeg', position: 'object-center' },
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit3.jpeg', position: 'object-[center_25%]' },
+          { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit2.jpeg', position: 'object-[center_20%]' }
+        ];
+
+        // Компонент каруселі з підтримкою автопрокрутки та індивідуального кадрування
+        const Carousel = ({ slides }) => {
+          const [currentIndex, setCurrentIndex] = useState(0);
+
+          useEffect(() => {
+            const timer = setInterval(() => {
+              setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+            }, 5000);
+            return () => clearInterval(timer);
+          }, [slides.length]);
+
+          const prevSlide = (e) => {
+            e.stopPropagation();
+            setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+          };
+
+          const nextSlide = (e) => {
+            e.stopPropagation();
+            setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+          };
+
+          return (
+            <div className="relative w-full h-full group overflow-hidden rounded-sm bg-[#EBF0EC]">
+              {/* Зображення */}
+              {slides.map((slide, idx) => (
+                <div 
+                  key={idx}
+                  className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                >
+                  <img 
+                    src={slide.url} 
+                    alt={`Слайд ${idx + 1}`} 
+                    className={`w-full h-full object-cover ${slide.position || 'object-center'}`}
+                  />
+                </div>
+              ))}
+
+              {/* Стрілочка вліво */}
+              <button 
+                onClick={prevSlide}
+                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-2 rounded-full transition opacity-0 group-hover:opacity-100 focus:opacity-100"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {/* Стрілочка вправо */}
+              <button 
+                onClick={nextSlide}
+                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/60 text-white p-2 rounded-full transition opacity-0 group-hover:opacity-100 focus:opacity-100"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              {/* Крапки індикатори знизу */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
+                {slides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
+                    className={`w-2 h-2 rounded-full transition-all ${idx === currentIndex ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/80'}`}
+                  />
+                ))}
+              </div>
+            </div>
+          );
+        };
+
         function App() {
           const [currentPage, setCurrentPage] = useState('home');
           const [selectedMember, setSelectedMember] = useState(null);
           const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
           const [activeActivityTab, setActiveActivityTab] = useState('hospitals');
-          const [activeRetreatSubTab, setActiveRetreatSubTab] = useState('bukovel'); // Новий стан для підвкладок ретритів
+          const [activeRetreatSubTab, setActiveRetreatSubTab] = useState('bukovel');
 
           const navigateToMember = (member) => {
             setSelectedMember(member);
@@ -431,35 +514,65 @@
                                                 </ul>
                                             </div>
                                             <div className="lg:w-1/2 w-full">
-                                                {/* Використовує вказане фото з сімейного ретриту у снігах */}
-                                                <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/mounting.jpeg" className="rounded-sm w-full object-cover h-[350px] border border-[#DCE3DB] shadow-sm" alt="Ретрит Буковель" />
+                                                {/* Ідеальне фокусування на нижній частині кадру (object-[center_90%]), щоб не обрізались обличчя внизу */}
+                                                <div className="h-[350px] w-full border border-[#DCE3DB] shadow-sm rounded-sm overflow-hidden">
+                                                    <Carousel slides={bukovelSlides} />
+                                                </div>
                                             </div>
                                         </div>
                                     ) : (
-                                        <div className="flex flex-col lg:flex-row gap-12">
-                                            <div className="lg:w-1/2">
-                                                <h3 className="text-3xl font-bold text-[#2B3830] mb-6 military-font uppercase tracking-wider">ВІКЕНД В ЄВРОПІ: ПРОЕКТ ДОВГОСТРОКОВОГО ВПЛИВУ</h3>
-                                                <p className="text-lg text-[#5C6E62] leading-relaxed mb-6">
-                                                    Цей проект створено з метою довгострокового впливу на ветеранів, щоб природно показати їм любов Христа через наше піклування і служіння. Це можливість створити надійне підґрунтя для більш масштабного служіння та стати важливою частиною екосистеми допомоги ветеранам з інвалідністю.
-                                                </p>
-                                                <div className="border-t border-[#DCE3DB] pt-6">
-                                                    <p className="text-xs font-bold text-[#768E80] uppercase tracking-wider mb-3 military-font">Наші цілі:</p>
-                                                    <ul className="space-y-4 font-semibold text-[#5C6E62]">
-                                                        <li className="flex items-start text-base">
-                                                            <span className="text-[#768E80] mr-3 mt-1">★</span> 
-                                                            <span>Мати можливість довгострокового служіння та духовного впливу на ветерана через декілька спільних поїздок.</span>
+                                        /* Європейський ретрит, повністю спроектований у стилі слайдера та сітки зі скріншоту */
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+                                            {/* Ліва колонка (Слайдер-картка) */}
+                                            <div className="bg-white border border-[#DCE3DB] p-4 rounded-sm flex flex-col justify-between shadow-sm">
+                                                <div>
+                                                    <div className="h-56 w-full mb-4 rounded-sm overflow-hidden border border-[#DCE3DB]">
+                                                        <Carousel slides={bukovelSlides} />
+                                                    </div>
+                                                    <h4 className="text-lg font-bold text-[#2B3830] mb-2 military-font uppercase tracking-wider">Час для відпочинку</h4>
+                                                    <p className="text-[#5C6E62] text-sm leading-relaxed">
+                                                        Я дуже вдячний Богу за можливість провести спокійний усамітнений ретрит у зимових горах. Це був безцінний час тиші та молитви, який дозволив мені відновити сили та почути Божий голос перед наступним сезоном служіння.
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            {/* Середня колонка (Опис, цитата та цілі) */}
+                                            <div className="flex flex-col justify-between p-2">
+                                                <div>
+                                                    <div className="inline-block bg-[#768E80]/20 text-[#2B3830] font-bold text-[10px] px-3 py-1 border border-[#768E80]/40 rounded-sm mb-4 uppercase tracking-widest military-font">
+                                                        ВОЗЗ'ЄДНАННЯ
+                                                    </div>
+                                                    <h3 className="text-2xl font-bold text-[#2B3830] mb-4 military-font uppercase tracking-wider leading-tight">ВІКЕНД В ЄВРОПІ: ПРОЕКТ ДОВГОСТРОКОВОГО ВПЛИВУ</h3>
+                                                    <p className="text-sm text-[#5C6E62] leading-relaxed mb-6">
+                                                        Цей проект створено з метою довгострокового впливу на ветеранів, щоб природно показати їм любов Христа через наше піклування і служіння. Це можливість створити надійне підґрунтя для більш масштабного служіння та стати важливою частиною екосистеми допомоги ветеранам з інвалідністю.
+                                                    </p>
+                                                    
+                                                    {/* Цитата / Блокквот */}
+                                                    <div className="border-l-4 border-[#768E80] bg-[#E9EBE4]/40 p-4 italic text-[#5C6E62] text-xs rounded-r-sm leading-relaxed">
+                                                        "Було несподівано і зворушливо чути, як хлопці ділися тим, що це можливість відволіктися від болю та знову відчути смак життя. Наша ціль — підтримати кожного на шляху до повного духовного та фізичного відновлення."
+                                                    </div>
+                                                </div>
+
+                                                <div className="border-t border-[#DCE3DB] pt-4 mt-4">
+                                                    <p className="text-xs font-bold text-[#768E80] uppercase tracking-wider mb-2 military-font">Наші цілі:</p>
+                                                    <ul className="space-y-3 font-semibold text-[#5C6E62] text-xs">
+                                                        <li className="flex items-start">
+                                                            <span className="text-[#768E80] mr-2 mt-0.5">★</span> 
+                                                            <span>Мати можливість довгострокового служіння та духовного впливу на ветерана через декілька спільних поїздок та побудова ветеранської спільноти.</span>
                                                         </li>
-                                                        <li className="flex items-start text-base">
-                                                            <span className="text-[#768E80] mr-3 mt-1">★</span> 
-                                                            <span>Побудова міцної, підтримуючої ветеранської спільноти для взаємодопомоги у цивільному житті.</span>
+                                                        <li className="flex items-start">
+                                                            <span className="text-[#768E80] mr-2 mt-0.5">★</span> 
+                                                            <span>Стати частиною екосистеми допомоги ветеранам з інвалідністю, забезпечуючи надійну реінтеграцію.</span>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <div className="lg:w-1/2 w-full grid grid-cols-2 gap-4">
-                                                <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit.jpeg" className="rounded-sm w-full object-cover h-[165px] border border-[#DCE3DB] shadow-sm" alt="Ретрит Європа пам'ятка" />
-                                                <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit3.jpeg" className="rounded-sm w-full object-cover h-[165px] border border-[#DCE3DB] shadow-sm" alt="Ретрит спілкування за столом" />
-                                                <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit2.jpeg" className="col-span-2 rounded-sm w-full object-cover h-[150px] border border-[#DCE3DB] shadow-sm" alt="Ретрит спільне фото" />
+
+                                            {/* Права колонка (Велика карусель європейських фотографій з гарним кадруванням) */}
+                                            <div className="w-full h-full min-h-[350px] lg:min-h-0">
+                                                <div className="w-full h-full relative rounded-sm overflow-hidden border border-[#DCE3DB] shadow-sm">
+                                                    <Carousel slides={europeSlides} />
+                                                </div>
                                             </div>
                                         </div>
                                     )}
