@@ -91,7 +91,7 @@
 
 Я деякий час працював у сфері продажів. Хоча війна на Донбасі вже тривала, життя для багатьох залишалося звичним. Але повномасштабне вторгнення 2022 року змінило все. Мене мобілізували до Збройних Сил України, і я служив розвідником у штурмовій бригаді. Під час одного з бойових завдань я отримав важке поранення і втратив кінцівку.
 
-Під час відновлення та реабілітації я познайомився з багатьма побратимами, які також пережили втрати та перебували в пошуку сенсу, надії й спільноти. Бог почав глибоко працювати в моєму серці, і я зрозумів, що не можу мовчати — я хочу йти поруч з тими, хто страждає.
+Під час відновлення та реабілітації я познайомився з бачатьма побратимами, які також пережили втрати та перебували в пошуку сенсу, надії й спільноти. Бог почав глибоко працювати в моєму серці, і я зрозумів, що не можу мовчати — я хочу йти поруч з тими, хто страждає.
 
 Саме тому я приєднався до місії «Україна для Христа» (CRU), щоб ділитися Євангелієм із ветеранами — тими, хто поранений тілом і душею, але відкритий до істини. Лише Христос може зцілити найглибші рани.`
           }
@@ -120,6 +120,7 @@
           const [selectedMember, setSelectedMember] = useState(null);
           const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
           const [activeActivityTab, setActiveActivityTab] = useState('hospitals');
+          const [activeRetreatSubTab, setActiveRetreatSubTab] = useState('bukovel'); // Новий стан для підвкладок ретритів
 
           const navigateToMember = (member) => {
             setSelectedMember(member);
@@ -394,26 +395,74 @@
                             )}
 
                             {activeActivityTab === 'retreats' && (
-                                <div className="flex flex-col lg:flex-row gap-12">
-                                    <div className="lg:w-1/2">
-                                        <h3 className="text-3xl font-bold text-[#2B3830] mb-6 military-font uppercase tracking-wider">РЕТРИТИ: БЕЗПЕЧНИЙ ПРОСТІР</h3>
-                                        <p className="text-lg text-[#5C6E62] leading-relaxed mb-8">
-                                            Це «коло своїх», де ветерани можуть по-справжньому розслабитися. Я роблю це, щоб дати можливість відпочити від рутини та сірої буденності, перебуваючи в колі побратимів, які розуміють тебе без зайвих слів.
-                                        </p>
-                                        <ul className="space-y-4 font-semibold text-[#5C6E62]">
-                                            <li className="flex items-center text-base">
-                                                <span className="text-[#768E80] mr-3">★</span> Психологічне розвантаження у горах
-                                            </li>
-                                            <li className="flex items-center text-base">
-                                                <span className="text-[#768E80] mr-3">★</span> Духовне відновлення та спільна молитва
-                                            </li>
-                                        </ul>
+                                <div className="flex flex-col gap-8">
+                                    {/* Інтерактивні підвкладки для Ретриту */}
+                                    <div className="flex border-b border-[#DCE3DB] pb-1 space-x-6 military-font text-xs tracking-widest font-bold">
+                                        <button 
+                                            onClick={() => setActiveRetreatSubTab('bukovel')}
+                                            className={`pb-3 transition-all relative ${activeRetreatSubTab === 'bukovel' ? 'text-[#768E80]' : 'text-[#5C6E62] hover:text-[#2B3830]'}`}
+                                        >
+                                            Ретрити в Буковелі
+                                            {activeRetreatSubTab === 'bukovel' && <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#768E80]"></div>}
+                                        </button>
+                                        <button 
+                                            onClick={() => setActiveRetreatSubTab('europe')}
+                                            className={`pb-3 transition-all relative ${activeRetreatSubTab === 'europe' ? 'text-[#768E80]' : 'text-[#5C6E62] hover:text-[#2B3830]'}`}
+                                        >
+                                            Вікенд в Європі
+                                            {activeRetreatSubTab === 'europe' && <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[#768E80]"></div>}
+                                        </button>
                                     </div>
-                                    <div className="lg:w-1/2 w-full grid grid-cols-2 gap-4">
-                                        <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit1.jpeg" className="col-span-2 rounded-sm w-full object-cover h-[240px] border border-[#DCE3DB] shadow-sm" alt="Ретрит гори" />
-                                        <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit.jpeg" className="rounded-sm w-full object-cover h-[200px] border border-[#DCE3DB] shadow-sm" alt="Ретрит екскурсія" />
-                                        <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit3.jpeg" className="rounded-sm w-full object-cover h-[200px] border border-[#DCE3DB] shadow-sm" alt="Ретрит спілкування" />
-                                    </div>
+
+                                    {activeRetreatSubTab === 'bukovel' ? (
+                                        <div className="flex flex-col lg:flex-row gap-12">
+                                            <div className="lg:w-1/2">
+                                                <h3 className="text-3xl font-bold text-[#2B3830] mb-6 military-font uppercase tracking-wider">РЕТРИТИ В БУКОВЕЛІ: БЕЗПЕЧНИЙ ПРОСТІР</h3>
+                                                <p className="text-lg text-[#5C6E62] leading-relaxed mb-8">
+                                                    Це «коло своїх», де ветерани можуть по-справжньому розслабитися. Ми робимо це, щоб дати можливість відпочити від рутини та сірої буденності, перебуваючи в колі побратимів, які розуміють тебе без зайвих слів.
+                                                </p>
+                                                <ul className="space-y-4 font-semibold text-[#5C6E62]">
+                                                    <li className="flex items-center text-base">
+                                                        <span className="text-[#768E80] mr-3">★</span> Психологічне розвантаження у горах
+                                                    </li>
+                                                    <li className="flex items-center text-base">
+                                                        <span className="text-[#768E80] mr-3">★</span> Духовне відновлення та спільна молитва
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div className="lg:w-1/2 w-full">
+                                                {/* Використовує вказане фото з сімейного ретриту у снігах */}
+                                                <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/mounting.jpeg" className="rounded-sm w-full object-cover h-[350px] border border-[#DCE3DB] shadow-sm" alt="Ретрит Буковель" />
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div className="flex flex-col lg:flex-row gap-12">
+                                            <div className="lg:w-1/2">
+                                                <h3 className="text-3xl font-bold text-[#2B3830] mb-6 military-font uppercase tracking-wider">ВІКЕНД В ЄВРОПІ: ПРОЕКТ ДОВГОСТРОКОВОГО ВПЛИВУ</h3>
+                                                <p className="text-lg text-[#5C6E62] leading-relaxed mb-6">
+                                                    Цей проект створено з метою довгострокового впливу на ветеранів, щоб природно показати їм любов Христа через наше піклування і служіння. Це можливість створити надійне підґрунтя для більш масштабного служіння та стати важливою частиною екосистеми допомоги ветеранам з інвалідністю.
+                                                </p>
+                                                <div className="border-t border-[#DCE3DB] pt-6">
+                                                    <p className="text-xs font-bold text-[#768E80] uppercase tracking-wider mb-3 military-font">Наші цілі:</p>
+                                                    <ul className="space-y-4 font-semibold text-[#5C6E62]">
+                                                        <li className="flex items-start text-base">
+                                                            <span className="text-[#768E80] mr-3 mt-1">★</span> 
+                                                            <span>Мати можливість довгострокового служіння та духовного впливу на ветерана через декілька спільних поїздок.</span>
+                                                        </li>
+                                                        <li className="flex items-start text-base">
+                                                            <span className="text-[#768E80] mr-3 mt-1">★</span> 
+                                                            <span>Побудова міцної, підтримуючої ветеранської спільноти для взаємодопомоги у цивільному житті.</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div className="lg:w-1/2 w-full grid grid-cols-2 gap-4">
+                                                <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit.jpeg" className="rounded-sm w-full object-cover h-[165px] border border-[#DCE3DB] shadow-sm" alt="Ретрит Європа пам'ятка" />
+                                                <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit3.jpeg" className="rounded-sm w-full object-cover h-[165px] border border-[#DCE3DB] shadow-sm" alt="Ретрит спілкування за столом" />
+                                                <img src="https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit2.jpeg" className="col-span-2 rounded-sm w-full object-cover h-[150px] border border-[#DCE3DB] shadow-sm" alt="Ретрит спільне фото" />
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             )}
                         </div>
