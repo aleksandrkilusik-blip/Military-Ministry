@@ -28,6 +28,11 @@
             background-image: radial-gradient(rgba(118, 142, 128, 0.15) 1px, transparent 1px);
             background-size: 24px 24px;
         }
+        /* Текстура сітки для контрастних кольорових блоків */
+        .tactical-grid-white {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
     </style>
 </head>
 <body className="bg-[#F4F6F4] text-[#2B3830]">
@@ -87,7 +92,7 @@
             image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/IMG_6525.JPG',
             externalLink: 'https://aleksandrkilusik-blip.github.io/kyliushyk-news/index.html#activity',
             objectPosition: 'object-[center_18%]', 
-            description: `Мене звати Олександр. Під час навчання в університеті я прийшов до Христа завдяки служінню CRU — один зі співробітників місії поділився зі мною Євангелієм. Цей момент став для мене духовним народженням і повністю змінив напрямок мого життя.
+            description: `Мене звати Олександр. Під час навчання в університеті я прийшов до Христа завдяки служінню CRU — один зі співробітников місії поділився зі мною Євангелієм. Цей момент став для мене духовним народженням і повністю змінив напрямок мого життя.
 
 Я деякий час працював у сфері продажів. Хоча війна на Донбасі вже тривала, життя для багатьох залишалося звичним. Але повномасштабне вторгнення 2022 року змінило все. Мене мобілізували до Збройних Сил України, і я служив розвідником у штурмовій бригаді. Під час одного з бойових завдань я отримав важке поранення і втратив кінцівку.
 
@@ -304,8 +309,9 @@
                       
                       <div className="w-12 h-[2px] bg-[#A4B5A9]/50 mx-auto mb-8"></div>
                       
+                      {/* Оновлений підпис згідно з побажаннями користувача */}
                       <p className="max-w-3xl text-xl sm:text-2xl text-[#E2EAE3] mx-auto font-light leading-relaxed serif-accent italic">
-                        Бути поруч із тими, хто повертається з війни. Я — духовний тил ветеранів України.
+                        «Ветерани — ветеранам. Духовна підтримка від тих, хто розуміє.»
                       </p>
                       
                       <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4 military-font tracking-[0.2em] text-xs">
@@ -371,34 +377,36 @@
                     </div>
                   </section>
 
-                  {/* Секція "Чому ветерани?" */}
-                  <section id="why-veterans-section" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#F4F6F4] max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center border-b border-[#DCE3DB]">
-                    <div className="lg:w-3/5">
-                        <p className="text-[#768E80] font-bold text-xs tracking-widest uppercase mb-4 military-font">★ ПРІОРИТЕТНИЙ НАПРЯМОК ★</p>
-                        <h2 className="text-4xl sm:text-5xl font-bold text-[#2B3830] mb-8 leading-tight military-font uppercase tracking-wide">Досягти ветеранів України надією Христа</h2>
-                        <p className="text-lg text-[#5C6E62] mb-6 leading-relaxed">
-                            Сьогодні в Україні понад <span className="font-bold text-[#2B3830] bg-[#768E80]/10 px-1">1,3 мільйона ветеранів</span> — багато з них мають глибокі зовнішні та внутрішні рани. Після війни ця цифра може зрости до <span className="font-bold text-[#2B3830] bg-[#768E80]/10 px-1">5-6 мільйонів</span>.
-                        </p>
-                        <div className="bg-[#E9EBE4] border-l-2 border-[#768E80] p-6 rounded-r-sm mb-6 text-[#5C6E62] font-medium leading-relaxed italic text-base">
-                            Багато ветеранів повертаються з болем, ізоляцією та внутрішньою пусткою. Церква — це місце, де вони можуть знайти Творця, відчути прийняття й спільноту, яка допоможе реінтегруватися в суспільство.
-                        </div>
-                        <p className="text-lg text-[#5C6E62] leading-relaxed">
-                            Саме тому я долучився до місії «Україна для Христа» — щоб бути поруч, слухати їх історії й вказувати на Того, хто здатен відновити.
-                        </p>
-                    </div>
-                    
-                    {/* Статистичні віджети у світлому делікатному стилі */}
-                    <div className="lg:w-2/5 flex flex-col gap-6 w-full">
-                        <div className="bg-white border border-[#DCE3DB] rounded-sm p-8 relative overflow-hidden shadow-sm">
-                            <div className="absolute top-0 left-0 w-[3px] h-full bg-[#768E80]"></div>
-                            <h3 className="text-5xl font-black text-[#768E80] mb-1 military-font">1.3 M</h3>
-                            <p className="text-[10px] font-bold text-[#5C6E62] uppercase tracking-widest military-font">Ветеранів сьогодні</p>
-                        </div>
-                        <div className="bg-white border border-[#DCE3DB] rounded-sm p-8 relative overflow-hidden shadow-sm">
-                            <div className="absolute top-0 left-0 w-[3px] h-full bg-[#A4B5A9]"></div>
-                            <h3 className="text-5xl font-black text-[#2B3830] mb-1 military-font">6.0 M</h3>
-                            <p className="text-[10px] font-bold text-[#5C6E62] uppercase tracking-widest military-font">Потенційно з родинами</p>
-                        </div>
+                  {/* Оновлена секція "Чому ветерани?" залита шляхетним кольором шавлії */}
+                  <section id="why-veterans-section" className="w-full bg-[#768E80] text-white py-24 border-b border-[#DCE3DB] tactical-grid-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-16 items-center">
+                      <div className="lg:w-3/5">
+                          <p className="text-[#E9EBE4] font-bold text-xs tracking-widest uppercase mb-4 military-font">★ ПРІОРИТЕТНИЙ НАПРЯМОК ★</p>
+                          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-8 leading-tight military-font uppercase tracking-wide">Досягти ветеранів України надією Христа</h2>
+                          <p className="text-lg text-[#EBF0EC] mb-6 leading-relaxed">
+                              Сьогодні в Україні понад <span className="font-bold text-white bg-[#2B3830]/50 px-1.5 py-0.5 rounded-sm">1,3 мільйона ветеранів</span> — багато з них мають глибокі зовнішні та внутрішні рани. Після війни ця цифра може зрости до <span className="font-bold text-white bg-[#2B3830]/50 px-1.5 py-0.5 rounded-sm">5-6 мільйонів</span>.
+                          </p>
+                          <div className="bg-[#2B3830]/30 border-l-2 border-[#E9EBE4] p-6 rounded-r-sm mb-6 text-[#E2EAE3] font-medium leading-relaxed italic text-base">
+                              Багато ветеранів повертаються з болем, ізоляцією та внутрішньою пусткою. Церква — це місце, де вони можуть знайти Творця, відчути прийняття й спільноту, яка допоможе реінтегруватися в суспільство.
+                          </div>
+                          <p className="text-lg text-[#EBF0EC] leading-relaxed">
+                              Саме тому я долучився до місії «Україна для Христа» — щоб бути поруч, слухати їх історії й вказувати на Того, хто здатен відновити.
+                          </p>
+                      </div>
+                      
+                      {/* Статистичні віджети на залитому фоні */}
+                      <div className="lg:w-2/5 flex flex-col gap-6 w-full">
+                          <div className="bg-[#2B3830] border border-[#768E80]/40 rounded-sm p-8 relative overflow-hidden shadow-md">
+                              <div className="absolute top-0 left-0 w-[3px] h-full bg-[#E9EBE4]"></div>
+                              <h3 className="text-5xl font-black text-[#E9EBE4] mb-1 military-font">1.3 M</h3>
+                              <p className="text-[10px] font-bold text-[#A4B5A9] uppercase tracking-widest military-font">Ветеранів сьогодні</p>
+                          </div>
+                          <div className="bg-[#2B3830] border border-[#768E80]/40 rounded-sm p-8 relative overflow-hidden shadow-md">
+                              <div className="absolute top-0 left-0 w-[3px] h-full bg-[#A4B5A9]"></div>
+                              <h3 className="text-5xl font-black text-[#E9EBE4] mb-1 military-font">6.0 M</h3>
+                              <p className="text-[10px] font-bold text-[#A4B5A9] uppercase tracking-widest military-font">Потенційно з родинами</p>
+                          </div>
+                      </div>
                     </div>
                   </section>
 
@@ -520,9 +528,9 @@
                                                     <div className="inline-block bg-[#768E80]/20 text-[#A4B5A9] font-bold text-[10px] px-3 py-1 border border-[#768E80]/40 rounded-sm mb-4 uppercase tracking-widest military-font max-w-max">
                                                         БУКОВЕЛЬ
                                                     </div>
-                                                    <h3 className="text-3xl sm:text-4xl font-black text-[#F4F6F4] mb-6 military-font uppercase tracking-wider">РЕТРИТИ В БУКОВЕЛІ: БЕЗПЕЧНИЙ ПРОСТІР</h3>
+                                                    <h3 className="text-3xl sm:text-4xl font-black text-[#F4F6F4] mb-6 military-font uppercase tracking-wider">БУКОВЕЛЬ: ОСОБЛИВА ПОДІЯ</h3>
                                                     <p className="text-lg text-[#E2EAE3] leading-relaxed mb-8">
-                                                        Це «коло своїх», де ветерани можуть по-справжньому розслабитися. Ми робимо це, щоб дати можливість відпочити від рутини та сірої буденності, перебуваючи в колі побратимів, які розуміють тебе без зайвих слів.
+                                                        П’ять днів спокою, сили та єдності серед українських Карпат. Цей ретрит створений для того, щоб відновити внутрішній ресурс та побути в колі своїх.
                                                     </p>
                                                 </div>
                                                 <ul className="space-y-4 font-semibold text-[#A4B5A9] text-sm">
