@@ -1,1 +1,280 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Military Ministry Ukraine</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    
+    <!-- Babel для підтримки JSX у браузері -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
 
+    <script type="text/babel">
+        const { useState } = React;
+
+        // Дані команди з прямими посиланнями на ваші фото з GitHub
+        const teamMembers = [
+          {
+            id: 'pikylik',
+            name: 'Сім\'я Пікуліків',
+            role: 'Координатори служіння',
+            image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/pikylik.JPG',
+            description: 'Детальна інформація про служіння сім\'ї Пікуліків буде розміщена тут.'
+          },
+          {
+            id: 'yazvinsky',
+            name: 'Сім\'я Язвінських',
+            role: 'Духовна підтримка',
+            image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/IMG_6645.JPG',
+            description: 'Детальна інформація про служіння сім\'ї Язвінських буде розміщена тут.'
+          },
+          {
+            id: 'pecheuz',
+            name: 'Сім\'я Печеуз',
+            role: 'Робота з ветеранами',
+            image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/pecheuz.jpg',
+            description: 'Детальна інформація про служіння сім\'ї Печеуз буде розміщена тут.'
+          },
+          {
+            id: 'shevchenko',
+            name: 'Сім\'я Шевченків',
+            role: 'Організація заходів',
+            image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/shevchenko.jpg',
+            description: 'Детальна інформація про служіння сім\'ї Шевченків буде розміщена тут.'
+          },
+          {
+            id: 'kilyushik',
+            name: 'Олександр Килюшик',
+            role: 'Медіа та комунікації',
+            image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/IMG_6525.JPG',
+            description: 'Детальна інформація про служіння Олександра буде розміщена тут.'
+          }
+        ];
+
+        // SVG Іконки (замість зовнішньої бібліотеки для надійності)
+        const MenuIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>;
+        const MoonIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>;
+        const ChevronDownIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>;
+        const ArrowLeftIcon = ({ className }) => <svg xmlns="http://www.w3.org/2000/svg" className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>;
+
+        function App() {
+          const [currentPage, setCurrentPage] = useState('home');
+          const [selectedMember, setSelectedMember] = useState(null);
+          const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+          const navigateToMember = (member) => {
+            setSelectedMember(member);
+            setCurrentPage('member');
+            window.scrollTo(0, 0);
+          };
+
+          const navigateToHome = () => {
+            setCurrentPage('home');
+            setSelectedMember(null);
+            window.scrollTo(0, 0);
+          };
+
+          const Navbar = () => (
+            <nav className="w-full bg-white text-slate-800 shadow-sm sticky top-0 z-50">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between h-20 items-center">
+                  <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={navigateToHome}>
+                     <div className="font-bold text-xl leading-tight">
+                       <span className="text-blue-600">ВЕТЕРАНАМ</span><br/>
+                       <span className="text-yellow-500">УКРАЇНИ</span>
+                     </div>
+                  </div>
+
+                  <div className="hidden lg:flex space-x-6 text-sm font-semibold text-gray-600 tracking-wide">
+                    <a href="#" className="hover:text-blue-600 transition">МІЙ ШЛЯХ</a>
+                    <a href="#" className="hover:text-blue-600 transition">БАЧЕННЯ</a>
+                    <a href="#" className="hover:text-blue-600 transition">ЧОМУ ВЕТЕРАНИ?</a>
+                    <a href="#" className="hover:text-blue-600 transition">ДІЯЛЬНІСТЬ</a>
+                    <a href="#" className="hover:text-blue-600 transition">ПІДТРИМКА</a>
+                    <a href="#" className="hover:text-blue-600 transition">МОЛИТОВНІ ЛИСТИ</a>
+                  </div>
+
+                  <div className="hidden lg:flex items-center space-x-4">
+                    <div className="flex items-center text-gray-600 cursor-pointer hover:text-blue-600">
+                      <span className="mr-1 font-medium">UA</span>
+                      <ChevronDownIcon />
+                    </div>
+                    <button className="text-gray-500 hover:text-blue-600">
+                      <MoonIcon />
+                    </button>
+                    <button className="bg-[#FFCA28] hover:bg-yellow-500 text-slate-900 font-bold py-2.5 px-6 rounded-full transition duration-300 shadow-md">
+                      Стати партнером
+                    </button>
+                  </div>
+
+                  <div className="lg:hidden flex items-center">
+                    <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-gray-600 hover:text-gray-900 focus:outline-none">
+                      <MenuIcon />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {isMobileMenuOpen && (
+                <div className="lg:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-4 space-y-1 shadow-lg">
+                  <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md">МІЙ ШЛЯХ</a>
+                  <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md">БАЧЕННЯ</a>
+                  <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md">КОМАНДА</a>
+                  <button className="mt-4 w-full bg-[#FFCA28] text-slate-900 font-bold py-3 px-6 rounded-full">
+                    Стати партнером
+                  </button>
+                </div>
+              )}
+            </nav>
+          );
+
+          return (
+            <div className="min-h-screen bg-gray-50 font-sans">
+              <Navbar />
+
+              {currentPage === 'home' ? (
+                <main>
+                  <section className="relative bg-slate-900 pt-24 pb-48 px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+                    <div className="absolute inset-0 bg-gradient-to-b from-slate-800 to-slate-900 pointer-events-none"></div>
+                    
+                    <div className="relative z-10 max-w-4xl mx-auto mt-10">
+                      <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight text-white mb-2">
+                        Military
+                      </h1>
+                      <h1 className="text-5xl sm:text-7xl tracking-tight text-[#FFCA28] italic font-serif mb-8" style={{ fontFamily: 'Georgia, serif' }}>
+                        Ministry
+                      </h1>
+                      
+                      <p className="mt-4 max-w-2xl text-xl sm:text-2xl text-gray-300 mx-auto font-light leading-relaxed">
+                        Бути поруч із тими, хто повертається з війни. Я — духовний тил ветеранів України.
+                      </p>
+                      
+                      <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                        <button className="bg-[#FFCA28] hover:bg-yellow-500 text-slate-900 font-bold text-lg py-4 px-10 rounded-xl transition duration-300 shadow-lg">
+                          Стати партнером
+                        </button>
+                        <button className="bg-transparent border border-gray-400 text-white hover:bg-white/10 font-medium text-lg py-4 px-10 rounded-xl transition duration-300">
+                          Останні новини
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="absolute -bottom-16 sm:-bottom-20 left-1/2 transform -translate-x-1/2 w-11/12 max-w-5xl bg-white rounded-[2rem] shadow-2xl py-8 sm:py-12 px-4 sm:px-10 flex flex-col sm:flex-row justify-around items-center z-20 text-slate-800 gap-8 sm:gap-0">
+                      <div className="text-center">
+                        <p className="text-4xl sm:text-5xl font-black text-[#FFCA28] mb-2">1951</p>
+                        <p className="text-xs sm:text-sm font-bold tracking-widest text-gray-500">РІК ЗАСНУВАННЯ МІСІЇ</p>
+                      </div>
+                      <div className="hidden sm:block h-16 w-px bg-gray-200"></div>
+                      <div className="text-center">
+                        <p className="text-4xl sm:text-5xl font-black text-[#FFCA28] mb-2">191+</p>
+                        <p className="text-xs sm:text-sm font-bold tracking-widest text-gray-500">КРАЇН СВІТУ</p>
+                      </div>
+                      <div className="hidden sm:block h-16 w-px bg-gray-200"></div>
+                      <div className="text-center">
+                        <p className="text-4xl sm:text-5xl font-black text-[#FFCA28] mb-2">1991</p>
+                        <p className="text-xs sm:text-sm font-bold tracking-widest text-gray-500">СЛУЖИМО В УКРАЇНІ З</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section className="pt-32 sm:pt-40 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                    <div className="text-center mb-16">
+                      <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Наша команда</h2>
+                      <div className="w-24 h-1 bg-[#FFCA28] mx-auto rounded-full"></div>
+                      <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
+                        Люди, які присвятили своє життя служінню військовим та їхнім родинам.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+                      {teamMembers.map((member, index) => (
+                        <div 
+                          key={member.id} 
+                          onClick={() => navigateToMember(member)}
+                          className={`bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer transform transition duration-300 hover:-translate-y-2 hover:shadow-xl group
+                            ${index === 3 ? 'lg:col-start-1 lg:ml-[16.66%]' : ''} 
+                            ${index === 4 ? 'lg:col-start-2' : ''}`}
+                        >
+                          <div className="h-72 w-full overflow-hidden bg-gray-200">
+                            <img 
+                              src={member.image} 
+                              alt={member.name} 
+                              className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+                              loading="lazy"
+                            />
+                          </div>
+                          <div className="p-6 text-center">
+                            <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition">{member.name}</h3>
+                            <p className="text-[#FFCA28] font-medium">{member.role}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                </main>
+              ) : (
+                <main className="max-w-4xl mx-auto px-4 py-12">
+                  <button 
+                    onClick={navigateToHome}
+                    className="flex items-center text-gray-600 hover:text-blue-600 transition mb-8 font-medium"
+                  >
+                    <ArrowLeftIcon className="mr-2" />
+                    Повернутися на головну
+                  </button>
+                  
+                  <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+                    <div className="h-96 w-full relative">
+                      <img 
+                        src={selectedMember.image} 
+                        alt={selectedMember.name} 
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 p-8 text-white">
+                        <h1 className="text-4xl font-bold mb-2">{selectedMember.name}</h1>
+                        <p className="text-xl text-[#FFCA28] font-medium">{selectedMember.role}</p>
+                      </div>
+                    </div>
+                    <div className="p-8 sm:p-12">
+                      <h2 className="text-2xl font-bold text-slate-900 mb-4">Про служіння</h2>
+                      <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                        {selectedMember.description} 
+                        <br/><br/>
+                        Тут ви можете додати детальний опис діяльності цієї сім'ї або людини. Розкажіть їхню історію, як вони прийшли до цього служіння, і які проекти вони зараз ведуть.
+                      </p>
+                      
+                      <div className="bg-slate-50 border border-gray-100 rounded-2xl p-6 flex flex-col sm:flex-row justify-between items-center">
+                        <div className="mb-4 sm:mb-0">
+                          <h3 className="font-bold text-slate-900">Бажаєте підтримати це служіння?</h3>
+                          <p className="text-gray-500 text-sm">Ваша допомога є дуже важливою.</p>
+                        </div>
+                        <button className="bg-[#FFCA28] hover:bg-yellow-500 text-slate-900 font-bold py-3 px-8 rounded-xl transition w-full sm:w-auto">
+                          Підтримати {selectedMember.name.split(' ')[0] === 'Сім\'я' ? 'їх' : 'його'}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </main>
+              )}
+
+              <footer className="bg-slate-900 text-gray-400 py-12 text-center">
+                <p>© 2026 Military Ministry Ukraine. Всі права захищено.</p>
+              </footer>
+            </div>
+          );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
