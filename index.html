@@ -29,6 +29,7 @@
             role: 'Роман — лідер служіння',
             moreText: 'Більше про нас...',
             image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/pikylik.JPG',
+            objectPosition: 'object-center',
             description: `«Ми з Женікою прийшли до Бога через місію CRU. Вона стала штатною співробітницею місії на повний час у 2003 році, а я — у 2014-му. Ми познайомилися, коли я служив в армії під час війни, і після завершення моєї служби мы одружилися. До 2019 року ми служили студентам, а відтоді — служимо військовим. З того часу наше життя міцно пов'язане з армією та зі служінням солдатам і ветеранам.»`
           },
           {
@@ -37,6 +38,7 @@
             role: '',
             moreText: 'Більше про нас...',
             image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/IMG_6645.JPG',
+            objectPosition: 'object-center',
             description: 'Детальна інформація про служіння сім\'ї Язвінських буде розміщена тут. Ви можете додати детальний опис діяльності цієї сім\'ї, розповісти їхню історію, як вони прийшли до цього служіння, і які проекти вони зараз ведуть.'
           },
           {
@@ -45,7 +47,8 @@
             role: '',
             moreText: 'Більше про нас...',
             image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/pecheuz.jpg',
-            description: 'Детальна інформація про служіння сім\'ї Печеуз буде розміщена тут. Ви можете додати детальний опис діяльності цієї сім\'ї, розповісти їхню історію, як вони прийшли до цього служіння, і які проекти они зараз ведуть.'
+            objectPosition: 'object-center',
+            description: 'Детальна інформація про служіння сім\'ї Печеуз буде розміщена тут. Ви можете додати детальний опис діяльності цієї сім\'ї, розповісти їхню історію, як вони прийшли до цього служіння, і які проекти oni зараз ведуть.'
           },
           {
             id: 'shevchenko',
@@ -54,6 +57,7 @@
             moreText: 'Більше про нас...',
             image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/shevchenko.jpg',
             externalLink: 'https://k-shevchenko.com/#letters',
+            objectPosition: 'object-center',
             description: `Вітаємо вас з України! Мене звати Костя, і ми з дружиною Ланою є місіонерами студентського служіння «Україна для Христа» (Campus Crusade for Christ International). Ми обидва прийшли до Господа під час навчання через студентське служіння. Ми довго були волонтерами, будуючи духовні рухи в наших університетах, і врешті прийняли тверде рішення присвятити життя повночасному служінню. Сьогодні ми також неймовірно благословенні нашим маленьким сином Назаріком.
 
 З початком повномасштабної війни проти Росії мене мобілізували до Збройних Сил України. Перші шість місяців я провів на передовій, стикаючись із суворими реаліями бойових дій. З Божої милості та завдяки молитвам багатьох, мене згодом перевели на небойову посаду у військовому штабі в моєму рідному місті Одесі. Цей період став часом глибокого духовного зростання. Нещодавно я завершив активну військову службу, що дозволило мені повернутися до місіонерського покликання. Лана наразі працює в іншій місії, яка підтримує жертв війни та військових.
@@ -67,6 +71,7 @@
             moreText: 'Більше про мене...',
             image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/IMG_6525.JPG',
             externalLink: 'https://aleksandrkilusik-blip.github.io/kyliushyk-news/index.html#activity',
+            objectPosition: 'object-bottom', // Примусовий фокус на нижній частині кадру
             description: `Мене звати Олександр. Під час навчання в університеті я прийшов до Христа завдяки служінню CRU — один зі співробітників місії поділився зі мною Євангелієм. Цей момент став для мене духовним народженням і повністю змінив напрямок мого життя.
 
 Я деякий час працював у сфері продажів. Хоча війна на Донбасі вже тривала, життя для багатьох залишалося звичним. Але повномасштабне вторгнення 2022 року змінило все. Мене мобілізували до Збройних Сил України, і я служив розвідником у штурмовій бригаді. Під час одного з бойових завдань я отримав важке поранення і втратив кінцівку.
@@ -335,7 +340,7 @@
                                     <div className="lg:w-1/2">
                                         <h3 className="text-3xl font-bold text-slate-900 mb-6 uppercase tracking-tight">РЕТРИТИ: БЕЗПЕЧНИЙ ПРОСТІР</h3>
                                         <p className="text-xl text-gray-600 leading-relaxed font-medium mb-8">
-                                            Це «коло своїх», де ветерани можуть по-справжньому розслабитися. Я роблю це, щоб дати можливість відпочити від рутини та сірої буденності, перебуваючи в колі побратимів, які розуміють тебе без зайвих слів.
+                                            Це «коло своїх», де ветерани могут по-справжньому розслабитися. Я роблю це, щоб дати можливість відпочити від рутини та сірої буденності, перебуваючи в колі побратимів, які розуміють тебе без зайвих слів.
                                         </p>
                                         <ul className="space-y-4">
                                             <li className="flex items-center text-lg font-medium text-slate-800">
@@ -380,7 +385,7 @@
                               <img 
                                 src={member.image} 
                                 alt={member.name} 
-                                className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+                                className={`w-full h-full object-cover transition duration-700 group-hover:scale-105 ${member.objectPosition || 'object-center'}`}
                                 loading="lazy"
                               />
                             </div>
@@ -418,11 +423,11 @@
                   </button>
                   
                   <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-                    <div className="h-96 w-full relative">
+                    <div className="h-[28rem] sm:h-[38rem] w-full relative">
                       <img 
                         src={selectedMember.image} 
                         alt={selectedMember.name} 
-                        className="w-full h-full object-cover"
+                        className={`w-full h-full object-cover ${selectedMember.objectPosition || 'object-center'}`}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                       <div className="absolute bottom-0 left-0 p-8 text-white">
