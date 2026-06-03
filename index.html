@@ -35,7 +35,7 @@
         }
     </style>
 </head>
-<body className="bg-[#F4F6F4] text-[#2B3830]">
+<body class="bg-[#F4F6F4] text-[#2B3830]">
     <div id="root"></div>
 
     <script type="text/babel">
@@ -106,10 +106,12 @@
             detailRecord: "★ ОФІЦІЙНИЙ ПРОФІЛЬ // SERVICE RECORD ★",
             detailHistory: "ІСТОРІЯ СЛУЖІННЯ",
             detailMoreBtn: "Детальніше про мою діяльність",
-            supportBoxTitle: "Бажаєте підтримати це служіння?",
-            supportBoxDesc: "Ваша допомога є дуже важливою для відновлення бійців.",
-            supportBtnHim: "Підтримати його",
-            supportBtnThem: "Підтримати їх",
+            sigWishes: "З найкращими побажаннями у Христі,",
+            sigTeamName: "Команда мілітарі служіння",
+            sigRole: "Військове служіння в «Україна для Христа»",
+            sigOrg: "Campus Crusade for Christ Int'l",
+            sigVerse: "«Краще двом, як одному... Бо як упадуть, то підійме одне свого друга!»",
+            sigVerseRef: "Екклезіяст 4:9-10",
             footerGlory: "© 2026 Всі права захищено. Слава Україні!"
           },
           en: {
@@ -175,15 +177,16 @@
             detailRecord: "★ OFFICIAL PROFILE // SERVICE RECORD ★",
             detailHistory: "MINISTRY HISTORY",
             detailMoreBtn: "More about my ministry",
-            supportBoxTitle: "Would you like to support this ministry?",
-            supportBoxDesc: "Your help is crucial for the recovery of our fighters.",
-            supportBtnHim: "Support him",
-            supportBtnThem: "Support them",
+            sigWishes: "With best wishes in Christ,",
+            sigTeamName: "Military Ministry Team",
+            sigRole: "Military Ministry in \"Ukraine for Christ\"",
+            sigOrg: "Campus Crusade for Christ Int'l",
+            sigVerse: "“Two are better than one... For if they fall, one will lift up his companion.”",
+            sigVerseRef: "Ecclesiastes 4:9-10",
             footerGlory: "© 2026 All rights reserved. Glory to Ukraine!"
           }
         };
 
-        // Локалізовані дані команди
         const teamMembers = [
           {
             id: 'pikylik',
@@ -207,9 +210,9 @@
             description: {
               ua: `Усім привіт, любі друзі! Мене звати Женя, а мою дружину — Лєна. Ми з сім’єю вже понад 14 років служимо в місії «Україна для Христа», а саме у студентському служінні Campus Ukraine (CRU в Україні). Після того як ми прийняли Христа у своє серце, кожен із нас відчув Божий поклик присвятити життя євангелізації та учнівству серед студентів. У студентські роки ми були просто волонтерами цього служіння: познайомилися на студентських проєктах, згодом одружилися і стали місіонерами повного часу. Сім років наша родина служила серед студентів в Одесі (на півдні України), і вже сьомий рік ми служимо в Дніпрі (у центрі України). За цей час у нас народилися двоє чудових синів — Даниїл та Матвій.
 
-Коли у 2022 році почалася повномасштабна війна, я відчув Божий поклик іти служити й нести Євангеліє тим, хто цього зараз потребує найбільше — військовим на фронті. Так я став частиною армії. Я провів на війні трохи більше ніж 2,5 роки, і минуло вже понад шість місяців, відколи я демобілізувався та повернувся до сім’ї. Це стало можливим завдяки народженню нашої третьої дитини — донечки Віри.
+Коли у 2022 році почалася повномасштабної війна, я відчув Божий поклик іти служити й нести Євангеліє тим, хто цього зараз потребує найбільше — військовим на фронті. Так я став частиною армії. Я провів на війні трохи більше ніж 2,5 роки, і минуло вже понад шість місяців, відколи я демобілізувався та повернувся до сім’ї. Це стало можливим завдяки народженню нашої третьої дитини — донечки Віри.
 
-Зараз ми продовжуємо служити в місії «Україна для Христа» (CRU в Україні). Нині ми всією сім’єю живемо в Будапешті, де приєдналися до місцевої команди, яка служить біженцям з України. Але найбільше наші серця палають бажанням служити ветеранам та їхнім родинам — нести віру туди, де є відчай, надію туди, де є безнадія, і світло в темряву розбитих сердець та зломленого духу. Тому зараз ми більше зосереджені на євангелізації та учнівстві серед ветеранів і людей, які постраждали від війни.
+Зараз мы продовжуємо служити в місії «Україна для Христа» (CRU в Україні). Нині мы всією сім’єю живемо в Будапешті, де приєдналися до місцевої команди, яка служить біженцям з України. Але найбільше наші серця палають бажанням служити ветеранам та їхнім родинам — нести віру туди, де є відчай, надію туди, де є безнадія, і світло в темряву розбитих сердець та зломленого духу. Тому зараз ми більше зосереджені на євангелізації та учнівстві серед ветеранів і людей, які постраждали від війни.
 
 В одному служінні з вами, Женя та Лєна Язвінські.`,
               en: `Hello everyone, dear friends! My name is Zhenya, and my wife is Lena. Our family has been serving with the "Ukraine for Christ" mission for over 14 years, specifically in the student ministry Campus Ukraine (CRU in Ukraine). After we received Christ into our hearts, each of us felt God's calling to dedicate our lives to evangelism and discipleship among students. In our student years, we were simply volunteers of this ministry: we met at student projects, later got married, and became full-time missionaries. For seven years, our family served students in Odesa (in southern Ukraine), and for the past seven years, we have been serving in Dnipro (in central Ukraine). During this time, we were blessed with two wonderful sons — Danyil and Matvii.
@@ -229,7 +232,7 @@ In ministry with you, Zhenya and Lena Yazvinsky.`
             image: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/pecheuz.jpg',
             objectPosition: 'object-center',
             description: {
-              ua: 'Детальна інформація про служіння сім\'ї Печеуз буде розміщена тут. Ви можете додати детальний опис діяльності цієї сім\'ї, розповісти їхню історію, як они прийшли до цього служіння, і які проекти они зараз ведуть.',
+              ua: 'Детальна інформація про служіння сім\'ї Печеуз буде розміщена тут. Ви можете додати детальний опис діяльності цієї сім\'ї, розповісти їхню історію, як они прийшли до цього служіння, і які проекти вони зараз ведуть.',
               en: 'Detailed information about the Pecheuz family ministry will be posted here. You can add a detailed description of this family\'s activities, tell their story of how they came to this ministry, and what projects they are currently leading.'
             }
           },
@@ -244,7 +247,7 @@ In ministry with you, Zhenya and Lena Yazvinsky.`
             description: {
               ua: `Вітаємо вас з України! Мене звати Костя, і ми з дружиною Ланою є місіонерами студентського служіння «Україна для Христа» (Campus Crusade for Christ International). Ми обидва прийшли до Господа під час навчання через студентське служіння. Ми довго були волонтерами, будуючи духовні рухи в наших університетах, і врешті прийняли тверде рішення присвятити життя повночасному служінню. Сьогодні ми також неймовірно благословенні нашим маленьким сином Назаріком.
 
-З початком повномасштабної війни проти Росії мене мобілізували до Збройних Сил України. Перші шість місяців я провів на передовій, стикаючись із суворими реаліями бойових дій. З Божої милості та завдяки молитвам багатьох, мене згодом перевели на небойову посаду у військовому штабі в моєму рідному місті Одесі. Цей період став часом глибокого духовного зростання. Нещодавно я завершив активну військову службу, що дозволило мені повернутися до місіонерського покликання. Лана наразі працює в іншій місії, яка підтримує жертв війни та військових.
+З початком повномасштабної війни проти Росії мене мобілізували до Збройних Сил України. Перші шість місяців я провів на передовій, стикаючись із суворими реаліями бойових дій. З Божої милості та завдяки молитвам багатьох, мене згодом перевели на небойову посаду у військовому штабі в моєму рідному місті Одесі. Цей період став часом глибокого духовного зростання. Нещодавно я завершив активну військову службу, що дозволило мне повернутися до місіонерського покликання. Лана наразі працює в іншій місії, яка підтримує жертв війни та військових.
 
 Бог дивовижним чином розширює мій вплив. Хоча я продовжую служити студентам, мій досвід ветерана поклав на серце гострий тягар служіння військовим та ветеранам. Вони унікальним чином зіткнулися з темрявою та травмами війни, і зараз як ніколи потребують надії Євангелія. Щоб вірно слідувати цьому покликанню, я знаходжусь у стратегічному переході: до кінця 2026 року я частково служу як лідер команди Campus Одеса і частково запускаю нове служіння ветеранам. З січня 2027 року я повністю перейду до служіння ветеранам.`,
               en: `Greetings from Ukraine! My name is Kostya, and my wife Lana and I are missionaries with the student ministry "Ukraine for Christ" (Campus Crusade for Christ International). We both came to the Lord during our studies through student ministry. We volunteered for a long time, building spiritual movements in our universities, and eventually made a firm decision to dedicate our lives to full-time ministry. Today we are also incredibly blessed with our young son Nazarik.
@@ -274,32 +277,13 @@ God is expanding my influence in amazing ways. While I continue to serve student
 
 I worked in sales for some time. Although the war in Donbas was already ongoing, life remained normal for many. But the full-scale invasion of 2022 changed everything. I was mobilized into the Armed Forces of Ukraine and served as a scout in an assault brigade. During a combat mission, I was severely wounded and lost a limb.
 
-During my recovery and rehabilitation, I met many brothers-in-arms who had also experienced loss and were searching for meaning, hope, and community. God began to work deeply in my heart, and I realized that I could not remain silent — I wanted to walk alongside those who suffer.
+During my recovery and rehabilitation, I met many brothers-in-arms who had also experienced loss and were searching for meaning, hope, and community. God began to work deeply in my heart, and I realized that I cannot remain silent — I wanted to walk alongside those who suffer.
 
 That is why I joined the "Ukraine for Christ" (CRU) mission to share the Gospel with veterans — those wounded in body and soul, yet open to the truth. Only Christ can heal the deepest wounds.`
             }
           }
         ];
 
-        // Декоративний розділювач ( star )
-        const MilitaryDivider = ({ title }) => (
-          <div className="flex items-center justify-center my-12 max-w-5xl mx-auto px-4">
-            <div className="flex-grow h-[1px] bg-[#768E80]/30"></div>
-            <div className="flex items-center mx-4 space-x-2 text-[#768E80]">
-              <span className="text-xs">★</span>
-              {title && <span className="military-font text-xs uppercase tracking-[0.3em] text-[#2B3830] font-bold">{title}</span>}
-              <span className="text-xs">★</span>
-            </div>
-            <div className="flex-grow h-[1px] bg-[#768E80]/30"></div>
-          </div>
-        );
-
-        // SVG іконки
-        const MenuIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>;
-        const ChevronDownIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>;
-        const ArrowLeftIcon = ({ className }) => <svg xmlns="http://www.w3.org/2000/svg" className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>;
-
-        // Оновлені слайди для каруселі Буковелю
         const bukovelSlides = [
           { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retritb.jpeg', position: 'object-center', fit: 'contain' },
           { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retritb1.jpeg', position: 'object-center', fit: 'contain' },
@@ -312,7 +296,24 @@ That is why I joined the "Ukraine for Christ" (CRU) mission to share the Gospel 
           { url: 'https://raw.githubusercontent.com/aleksandrkilusik-blip/Military-Ministry/main/retrit2.jpeg', position: 'object-center', fit: 'contain' }
         ];
 
-        // Компонент каруселі
+        const ChevronDownIcon = () => (
+          <svg className="ml-1 w-4 h-4 inline-block" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        );
+
+        const MenuIcon = () => (
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        );
+
+        const ArrowLeftIcon = ({ className }) => (
+          <svg className={`w-5 h-5 ${className}`} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+          </svg>
+        );
+
         const Carousel = ({ slides }) => {
           const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -323,13 +324,13 @@ That is why I joined the "Ukraine for Christ" (CRU) mission to share the Gospel 
             return () => clearInterval(timer);
           }, [slides.length]);
 
-          const prevSlide = (e) => {
-            e.stopPropagation();
+          const prevSlide = (prevIdxEvent) => {
+            prevIdxEvent.stopPropagation();
             setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
           };
 
-          const nextSlide = (e) => {
-            e.stopPropagation();
+          const nextSlide = (nextIdxEvent) => {
+            nextIdxEvent.stopPropagation();
             setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
           };
 
@@ -374,7 +375,7 @@ That is why I joined the "Ukraine for Christ" (CRU) mission to share the Gospel 
                 {slides.map((_, idx) => (
                   <button
                     key={idx}
-                    onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
+                    onClick={(indicatorClickEvent) => { indicatorClickEvent.stopPropagation(); setCurrentIndex(idx); }}
                     className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-white scale-125' : 'bg-white/40 hover:bg-white/70'}`}
                   />
                 ))}
@@ -456,10 +457,6 @@ That is why I joined the "Ukraine for Christ" (CRU) mission to share the Gospel 
                         </div>
                       )}
                     </div>
-
-                    <button className="bg-[#768E80] hover:bg-[#5C7365] text-white font-bold py-2.5 px-6 uppercase tracking-widest military-font rounded-sm transition-all duration-200">
-                      {translations[lang].navSupport}
-                    </button>
                   </div>
 
                   {/* Мобільне меню кнопка */}
@@ -495,10 +492,6 @@ That is why I joined the "Ukraine for Christ" (CRU) mission to share the Gospel 
                       EN
                     </button>
                   </div>
-
-                  <button className="mt-4 w-full bg-[#768E80] text-white font-bold py-3 px-6 uppercase tracking-widest text-xs rounded-sm">
-                    {translations[lang].navSupport}
-                  </button>
                 </div>
               )}
             </nav>
@@ -571,8 +564,58 @@ That is why I joined the "Ukraine for Christ" (CRU) mission to share the Gospel 
                     </div>
                   </section>
 
+                  {/* Секція "Команда" - Колективні досьє з вирівнюванням */}
+                  <section id="team-section" className="pt-36 sm:pt-40 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+                    <div className="text-center mb-16">
+                      <p className="text-[#768E80] font-bold text-xs tracking-widest uppercase mb-2 military-font">{translations[lang].teamTag}</p>
+                      <h2 className="text-4xl sm:text-5xl font-bold text-[#2B3830] military-font uppercase tracking-widest">{translations[lang].teamTitle}</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {teamMembers.map((member, index) => (
+                        <div 
+                          key={member.id} 
+                          onClick={() => navigateToMember(member)}
+                          className={`bg-white border border-[#DCE3DB] rounded-sm overflow-hidden cursor-pointer transform transition duration-300 hover:-translate-y-1.5 hover:border-[#768E80] hover:shadow-md group flex flex-col justify-between
+                            ${index === 3 ? 'lg:col-start-1 lg:ml-[16.66%]' : ''} 
+                            ${index === 4 ? 'lg:col-start-2' : ''}`}
+                        >
+                          <div>
+                            {/* Фотографія */}
+                            <div className="h-80 w-full overflow-hidden bg-[#EBF0EC] border-b border-[#DCE3DB]">
+                              <img 
+                                src={member.image} 
+                                alt={member.name[lang]} 
+                                className={`w-full h-full object-cover transition duration-700 group-hover:scale-[1.03] ${member.objectPosition || 'object-center'}`}
+                                loading="lazy"
+                              />
+                            </div>
+                            <div className="pt-6 px-6 text-center">
+                              <h3 className="text-2xl font-bold text-[#2B3830] mb-1 military-font uppercase tracking-wider group-hover:text-[#768E80] transition-colors">{member.name[lang]}</h3>
+                              {member.role[lang] ? (
+                                <p className="text-[#768E80] font-bold text-[10px] uppercase tracking-[0.2em] military-font mb-1">{member.role[lang]}</p>
+                              ) : (
+                                <div className="h-4"></div>
+                              )}
+                            </div>
+                          </div>
+                          
+                          {/* Заклик до переходу */}
+                          <div className="pb-6 px-6 text-center mt-4">
+                            <span className="inline-flex items-center bg-[#E9EBE4] text-[#2B3830] font-bold text-[10px] uppercase tracking-widest military-font py-2 px-6 rounded-sm border border-[#DCE3DB] hover:bg-[#768E80] hover:text-white transition-all duration-200">
+                              {member.moreText[lang]}
+                              <svg className="ml-2 w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"></path>
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
                   {/* Секція "Бачення" */}
-                  <section id="vision-section" className="bg-[#E9EBE4]/50 pt-36 pb-20 px-4 sm:px-6 lg:px-8 border-b border-[#DCE3DB]">
+                  <section id="vision-section" className="bg-[#E9EBE4]/50 py-20 px-4 sm:px-6 lg:px-8 border-t border-b border-[#DCE3DB]">
                     <div className="max-w-7xl mx-auto text-center">
                         <div className="inline-block bg-[#768E80]/20 text-[#2B3830] font-bold text-[10px] px-6 py-1.5 border border-[#768E80]/40 rounded-sm mb-8 uppercase tracking-widest military-font">{translations[lang].visionTag}</div>
                         <h2 className="text-3xl sm:text-5xl font-bold text-[#2B3830] max-w-4xl mx-auto leading-tight serif-accent italic mb-16">
@@ -748,7 +791,7 @@ That is why I joined the "Ukraine for Christ" (CRU) mission to share the Gospel 
                                             <div className="lg:w-[45%] p-8 sm:p-12 flex flex-col justify-between relative">
                                                 <div>
                                                     <div className="inline-block bg-[#768E80]/20 text-[#A4B5A9] font-bold text-[10px] px-3 py-1 border border-[#768E80]/40 rounded-sm mb-4 uppercase tracking-widest military-font max-w-max">
-                                                        {translations[lang].actBukTag}
+                                                        БУКОВЕЛЬ
                                                     </div>
                                                     <h3 className="text-3xl sm:text-4xl font-black text-[#F4F6F4] mb-6 military-font uppercase tracking-wider">{translations[lang].actBukTitle}</h3>
                                                     <p className="text-lg text-[#E2EAE3] leading-relaxed mb-8">
@@ -775,7 +818,7 @@ That is why I joined the "Ukraine for Christ" (CRU) mission to share the Gospel 
                                             <div className="lg:w-[45%] p-8 sm:p-12 flex flex-col justify-between relative">
                                                 <div>
                                                     <div className="inline-block bg-[#768E80]/20 text-[#A4B5A9] font-bold text-[10px] px-3 py-1 border border-[#768E80]/40 rounded-sm mb-4 uppercase tracking-widest military-font max-w-max">
-                                                        {translations[lang].actEurTag}
+                                                        ВОЗЗ'ЄДНАННЯ
                                                     </div>
                                                     <h3 className="text-3xl sm:text-4xl font-black text-[#F4F6F4] mb-4 military-font uppercase tracking-wider leading-tight">{translations[lang].actEurTitle}</h3>
                                                     <p className="text-base text-[#E2EAE3] leading-relaxed mb-6">
@@ -814,59 +857,92 @@ That is why I joined the "Ukraine for Christ" (CRU) mission to share the Gospel 
                     </div>
                   </section>
 
-                  {/* Секція "Команда" - Колективні досьє з вирівнюванням */}
-                  <section id="team-section" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-                    <div className="text-center mb-16">
-                      <p className="text-[#768E80] font-bold text-xs tracking-widest uppercase mb-2 military-font">{translations[lang].teamTag}</p>
-                      <h2 className="text-4xl sm:text-5xl font-bold text-[#2B3830] military-font uppercase tracking-widest">{translations[lang].teamTitle}</h2>
-                    </div>
+                  {}
+                  {/* Новий мілітарі-блок з цитатою, інформацією та контактами команди */}
+                  <section className="bg-[#E9EBE4]/30 py-16 px-4 sm:px-6 lg:px-8 border-t border-[#DCE3DB] tactical-grid">
+                    <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+                      
+                      {/* Ліва колонка: логотип, вірш та аватар команди */}
+                      <div className="flex-1 space-y-6 max-w-xl">
+                        {/* Маленьке вишукане лого */}
+                        <div className="flex items-center space-x-2">
+                           <div className="w-5 h-5 border border-[#2B3830] bg-[#768E80] flex items-center justify-center rotate-45 transform">
+                              <span className="text-[#F4F6F4] text-[8px] font-black -rotate-45">★</span>
+                           </div>
+                           <span className="military-font font-bold text-xs tracking-wider text-[#2B3830]">UKRAINE FOR CHRIST</span>
+                        </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                      {teamMembers.map((member, index) => (
-                        <div 
-                          key={member.id} 
-                          onClick={() => navigateToMember(member)}
-                          className={`bg-white border border-[#DCE3DB] rounded-sm overflow-hidden cursor-pointer transform transition duration-300 hover:-translate-y-1.5 hover:border-[#768E80] hover:shadow-md group flex flex-col justify-between
-                            ${index === 3 ? 'lg:col-start-1 lg:ml-[16.66%]' : ''} 
-                            ${index === 4 ? 'lg:col-start-2' : ''}`}
-                        >
-                          <div>
-                            {/* Фотографія */}
-                            <div className="h-80 w-full overflow-hidden bg-[#EBF0EC] border-b border-[#DCE3DB]">
-                              <img 
-                                src={member.image} 
-                                alt={member.name[lang]} 
-                                className={`w-full h-full object-cover transition duration-700 group-hover:scale-[1.03] ${member.objectPosition || 'object-center'}`}
-                                loading="lazy"
-                              />
-                            </div>
-                            <div className="pt-6 px-6 text-center">
-                              <h3 className="text-2xl font-bold text-[#2B3830] mb-1 military-font uppercase tracking-wider group-hover:text-[#768E80] transition-colors">{member.name[lang]}</h3>
-                              {member.role[lang] ? (
-                                <p className="text-[#768E80] font-bold text-[10px] uppercase tracking-[0.2em] military-font mb-1">{member.role[lang]}</p>
-                              ) : (
-                                <div className="h-4"></div>
-                              )}
-                            </div>
+                        {/* Цитата з Писання */}
+                        <div className="space-y-2">
+                          <p className="text-xl sm:text-2xl font-bold leading-relaxed text-[#2B3830] serif-accent italic">
+                            {translations[lang].sigVerse}
+                          </p>
+                          <p className="text-xs font-bold text-[#768E80] tracking-widest military-font uppercase">
+                            {translations[lang].sigVerseRef}
+                          </p>
+                        </div>
+
+                        <hr className="border-[#DCE3DB] w-full" />
+
+                        <p className="text-xs font-semibold text-[#5C6E62] italic">
+                          {translations[lang].sigWishes}
+                        </p>
+
+                        {/* Профіль Команди */}
+                        <div className="flex items-center space-x-4">
+                          <div className="w-14 h-14 rounded-full bg-[#768E80] flex items-center justify-center border-2 border-[#5C6E62]/30 shadow-sm">
+                            <span className="text-[#F4F6F4] text-xl font-bold">★</span>
                           </div>
-                          
-                          {/* Заклик до переходу */}
-                          <div className="pb-6 px-6 text-center mt-4">
-                            <span className="inline-flex items-center bg-[#E9EBE4] text-[#2B3830] font-bold text-[10px] uppercase tracking-widest military-font py-2 px-6 rounded-sm border border-[#DCE3DB] hover:bg-[#768E80] hover:text-white transition-all duration-200">
-                              {member.moreText[lang]}
-                              <svg className="ml-2 w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"></path>
-                              </svg>
-                            </span>
+                          <div>
+                            <p className="font-bold text-[#2B3830] text-sm tracking-wide">{translations[lang].sigTeamName}</p>
+                            <p className="text-[10px] font-bold text-[#768E80] uppercase tracking-wider">{translations[lang].sigRole}</p>
+                            <p className="text-[9px] font-semibold text-[#5C6E62]/80 uppercase tracking-widest">{translations[lang].sigOrg}</p>
                           </div>
                         </div>
-                      ))}
+                      </div>
+
+                      {/* Права колонка: Контакти та соціальні посилання */}
+                      <div className="flex flex-col space-y-4 md:items-end w-full md:w-auto">
+                        <a href="mailto:oleksandr.kyliushyk@cru.org" className="flex items-center space-x-3 text-sm font-semibold text-[#2B3830] hover:text-[#768E80] transition-colors md:justify-end">
+                          <svg className="w-5 h-5 text-[#768E80]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                          </svg>
+                          <span>oleksandr.kyliushyk@cru.org</span>
+                        </a>
+
+                        <a href="tel:+380976058965" className="flex items-center space-x-3 text-sm font-semibold text-[#2B3830] hover:text-[#768E80] transition-colors md:justify-end">
+                          <svg className="w-5 h-5 text-[#768E80]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.387a12.017 12.017 0 01-4.5-4.5c-.156-.441.01-1.21.386-1.49l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                          </svg>
+                          <span>+380 (97) 605 89 65</span>
+                        </a>
+
+                        {/* Кнопки соцмереж у фірмовому кольорі */}
+                        <div className="flex space-x-3 md:justify-end pt-2">
+                          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white hover:bg-[#768E80] border border-[#DCE3DB] text-[#768E80] hover:text-white flex items-center justify-center rounded-full shadow-sm transition-all duration-300">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                            </svg>
+                          </a>
+                          <a href="https://t.me" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white hover:bg-[#768E80] border border-[#DCE3DB] text-[#768E80] hover:text-white flex items-center justify-center rounded-full shadow-sm transition-all duration-300">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.294.294-.602.294l.213-3.053 5.56-5.017c.24-.213-.054-.33-.374-.117L9.704 12.56l-2.96-.924c-.643-.201-.655-.643.134-.951l11.57-4.46c.537-.201.1.1.446.596z"/>
+                            </svg>
+                          </a>
+                          <a href="https://viber.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white hover:bg-[#768E80] border border-[#DCE3DB] text-[#768E80] hover:text-white flex items-center justify-center rounded-full shadow-sm transition-all duration-300">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.16 5.334 5.334.16 12 .16s11.84 5.174 11.84 11.68c-.003 6.551-5.177 11.84-11.84 11.84a11.753 11.753 0 01-5.69-1.472L0 24zm6.49-14.498c-.153-.34-.315-.346-.462-.352l-.391-.005c-.135 0-.354.051-.54.254-.186.204-.71.693-.71 1.692 0 .999.728 1.96.83 2.096.101.136 1.402 2.242 3.447 3.058 1.701.679 2.047.544 2.417.51.37-.034 1.196-.489 1.365-.963.169-.475.169-.882.118-.967-.05-.085-.186-.136-.39-.237-.203-.102-1.196-.59-1.381-.658-.185-.068-.32-.102-.455.102-.135.203-.523.658-.641.792-.118.134-.236.151-.439.05a5.526 5.526 0 01-1.625-1.002c-.563-.502-.942-1.121-1.053-1.312-.11-.191-.012-.294.09-.395.09-.09.203-.237.304-.356.102-.118.136-.203.204-.339.068-.135.034-.254-.017-.356-.05-.102-.462-1.114-.633-1.528z"/>
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+
                     </div>
                   </section>
                 </main>
               ) : (
                 
-                /* Сторінка детального опису - Офіційний Військовий Профіль / Досьє */
+                /* Сторінка детального опису */
                 <main className="max-w-4xl mx-auto px-4 py-12">
                   <button 
                     onClick={navigateToHome}
@@ -923,28 +999,12 @@ That is why I joined the "Ukraine for Christ" (CRU) mission to share the Gospel 
                           </a>
                         </div>
                       )}
-                      
-                      {/* Заклик до підтримки */}
-                      <div className="bg-[#E9EBE4]/50 border border-[#DCE3DB] rounded-sm p-6 flex flex-col sm:flex-row justify-between items-center relative">
-                        <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-[#768E80]/40"></div>
-                        <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-[#768E80]/40"></div>
-
-                        <div className="mb-4 sm:mb-0 text-center sm:text-left">
-                          <h3 className="font-bold text-[#2B3830] military-font uppercase tracking-wider text-sm">{translations[lang].supportBoxTitle}</h3>
-                          <p className="text-[#5C6E62] text-xs font-semibold">{translations[lang].supportBoxDesc}</p>
-                        </div>
-                        <button className="bg-[#768E80] hover:bg-[#5C7365] text-white font-bold py-3 px-8 uppercase tracking-widest text-[10px] rounded-sm military-font w-full sm:w-auto">
-                          {selectedMember.name[lang].split(' ')[0] === 'Сім\'я' || selectedMember.name[lang].endsWith('Family') 
-                            ? translations[lang].supportBtnThem 
-                            : translations[lang].supportBtnHim}
-                        </button>
-                      </div>
                     </div>
                   </div>
                 </main>
               )}
 
-              {/* Тактичний преміальний футер у стилі Slidesgo */}
+              {/* Тактичний преміальний футер */}
               <footer className="bg-[#2B3830] text-[#A4B5A9] py-12 border-t border-[#DCE3DB] tracking-wider military-font text-xs">
                 <div className="max-w-5xl mx-auto px-4 text-center">
                   <div className="flex justify-center space-x-1.5 mb-6 text-[#768E80]">
